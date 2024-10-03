@@ -28,11 +28,13 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 35),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                child: Text("Email", style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18
-                ),),
+                child: Text(
+                  "Email",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -49,12 +51,14 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                child: Text("Password", style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18
-                ),),
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                child: Text(
+                  "Password",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -62,7 +66,7 @@ class LoginPage extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    contentPadding: const EdgeInsets.symmetric( horizontal: 25),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
@@ -73,24 +77,22 @@ class LoginPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ElevatedButton(
-                  onPressed: () {
-                
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor :  AppColors.primary,
+                    backgroundColor: AppColors.primary,
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
                   ),
                   child: const Text(
-                    'Masuk', 
+                    'Masuk',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
-                    ) ,),
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -100,11 +102,10 @@ class LoginPage extends StatelessWidget {
                   child: const Text(
                     'Lupa password?',
                     style: TextStyle(
-                      color: AppColors.lineColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins'
-                    ),
+                        color: AppColors.lineColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
                   ),
                 ),
               ),
@@ -112,22 +113,22 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Belum mempunyai akun?',
+                  const Text(
+                    'Belum mempunyai akun?',
                     style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins'
-                    ),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: const Text(
                       'Daftar',
                       style: TextStyle(
-                        color: AppColors.lineColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins'),
+                          color: AppColors.lineColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                 ],
