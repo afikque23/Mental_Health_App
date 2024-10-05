@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/login/pages/login_page.dart';
+import 'package:intl/intl.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  RegisterPage({super.key});
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
 
+class _RegisterPageState extends State<RegisterPage> {
+  String? _selectedGender;
+  @override
+  void initState(){
+    super.initState();
+    _selectedGender = 'Laki-laki';
+  }
+  final _dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +26,7 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 32),
+              const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
@@ -26,7 +38,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 35),
+              const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 child: Text(
@@ -49,7 +61,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 child: Text(
@@ -73,7 +85,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 child: Text(
@@ -97,11 +109,67 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              // const SizedBox(height: 15),
+              // const Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              //   child: Text(
+              //     "Konfirmasi Password",
+              //     style: TextStyle(
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w500,
+              //         fontSize: 18),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: TextField(
+              //     obscureText: true,
+              //     decoration: InputDecoration(
+              //       labelText: 'Konfirmasi Password',
+              //       contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(35),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              const SizedBox(height: 15),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 child: Text(
-                  "Konfirmasi Password",
+                  "Jenis Kelamin",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: "Pilih Jenis Kelamin",
+                    icon: Icon(Icons.person),
+                  ),
+                  value: _selectedGender,
+                  items: <String>['Laki-laki', 'Perempuan'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedGender = newValue;
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(height: 15),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                child: Text(
+                  "Tanggal Lahir",
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -111,17 +179,21 @@ class RegisterPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Konfirmasi Password',
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(35),
-                    ),
+                  controller: _dateController,
+                  decoration: const InputDecoration(
+                    labelText: "Select Date",
+                    hintText: "yyyy-MM-dd",
+                    icon: Icon(Icons.calendar_today),
                   ),
+                  readOnly:
+                      true, // Agar TextField tidak bisa di-edit secara manual
+                  onTap: () async {
+                    await _selectDate(
+                        context); // Memanggil fungsi untuk memilih tanggal
+                  },
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ElevatedButton(
@@ -143,20 +215,20 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
-              Center(
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Lupa password?',
-                    style: TextStyle(
-                        color: AppColors.lineColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins'),
-                  ),
-                ),
-              ),
+              const SizedBox(height: 15),
+              // Center(
+              //   child: TextButton(
+              //     onPressed: () {},
+              //     child: const Text(
+              //       'Lupa password?',
+              //       style: TextStyle(
+              //           color: AppColors.lineColor,
+              //           fontSize: 16,
+              //           fontWeight: FontWeight.w500,
+              //           fontFamily: 'Poppins'),
+              //     ),
+              //   ),
+              // ),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -173,10 +245,7 @@ class RegisterPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (
-                            context) => const LoginPage(
-                          )
-                        ),
+                            builder: (context) => const LoginPage()),
                       );
                     },
                     child: const Text(
@@ -195,5 +264,17 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      _dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+    }
   }
 }
