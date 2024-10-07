@@ -203,11 +203,11 @@ class MoodSurveyScreenState extends State<MoodSurveyScreen> {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
