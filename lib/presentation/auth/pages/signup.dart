@@ -44,6 +44,6 @@ class SignupPage extends StatelessWidget {
   }
 
   Widget _fullNameField() {
-    return TextField();
+    return const TextField();
   }
 }
