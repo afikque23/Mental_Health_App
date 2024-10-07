@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart'; // Import logging package
+import 'package:logging/logging.dart';
 
-class MoodSurveyScreen extends StatefulWidget {
-  const MoodSurveyScreen({super.key});
+class ScreeningPage extends StatefulWidget {
+  const ScreeningPage({super.key});
 
   @override
-  MoodSurveyScreenState createState() => MoodSurveyScreenState();
+  ScreeningPageState createState() => ScreeningPageState();
 }
 
-class MoodSurveyScreenState extends State<MoodSurveyScreen> {
+class ScreeningPageState extends State<ScreeningPage> {
   final _logger = Logger('MoodSurveyScreen'); // Create logger instance
 
   int currentQuestionIndex = 0;
@@ -203,11 +203,11 @@ class MoodSurveyScreenState extends State<MoodSurveyScreen> {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
