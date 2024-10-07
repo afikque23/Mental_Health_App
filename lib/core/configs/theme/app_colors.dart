@@ -8,4 +8,5 @@ class AppColors {
   static const grey = Color.fromARGB(255, 126, 122, 122);
   static const darkGrey = Color(0xff343434);
   static const lighBackground = Color(0xffF2F2F2);
+  
 }

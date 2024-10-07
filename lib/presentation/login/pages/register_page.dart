@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/login/pages/login_page.dart';
 import 'package:intl/intl.dart';
+import 'package:mental_health_app/screening.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -200,7 +201,12 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ScreeningPage()),
+            );
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           padding: const EdgeInsets.symmetric(vertical: 10),
