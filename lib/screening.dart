@@ -12,7 +12,8 @@ class ScreeningPageState extends State<ScreeningPage> {
   final _logger = Logger('MoodSurveyScreen'); // Create logger instance
 
   int currentQuestionIndex = 0;
-  String? selectedAnswer; // Menyimpan jawaban yang dipilih
+  Map<int, String?> selectedAnswers =
+      {}; // Menyimpan jawaban untuk setiap pertanyaan
 
   final List<Map<String, String>> surveyQuestions = [
     {
@@ -80,8 +81,6 @@ class ScreeningPageState extends State<ScreeningPage> {
     if (currentQuestionIndex < surveyQuestions.length - 1) {
       setState(() {
         currentQuestionIndex++;
-        selectedAnswer =
-            null; // Reset jawaban yang dipilih saat berpindah ke pertanyaan berikutnya
       });
     } else {
       // Gunakan logger alih-alih print
@@ -93,8 +92,6 @@ class ScreeningPageState extends State<ScreeningPage> {
     if (currentQuestionIndex > 0) {
       setState(() {
         currentQuestionIndex--;
-        selectedAnswer =
-            null; // Reset jawaban yang dipilih saat berpindah ke pertanyaan sebelumnya
       });
     }
   }
@@ -121,38 +118,40 @@ class ScreeningPageState extends State<ScreeningPage> {
               ),
             ),
             const SizedBox(height: 40),
-            _buildOptionButton(
-                '1. Tidak pernah', selectedAnswer == '1. Tidak pernah'),
+            _buildOptionButton('1. Tidak pernah', '1. Tidak pernah'),
             const SizedBox(height: 23),
-            _buildOptionButton('2. Jarang', selectedAnswer == '2. Jarang'),
+            _buildOptionButton('2. Jarang', '2. Jarang'),
             const SizedBox(height: 23),
-            _buildOptionButton(
-                '3. Cukup Sering', selectedAnswer == '3. Cukup Sering'),
+            _buildOptionButton('3. Cukup Sering', '3. Cukup Sering'),
             const SizedBox(height: 23),
-            _buildOptionButton('4. Sering', selectedAnswer == '4. Sering'),
+            _buildOptionButton('4. Sering', '4. Sering'),
             const SizedBox(height: 23),
-            _buildOptionButton(
-                '5. Sangat Sering', selectedAnswer == '5. Sangat Sering'),
+            _buildOptionButton('5. Sangat Sering', '5. Sangat Sering'),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  onPressed: _previousQuestion,
-                  child: const Text(
-                    'Kembali',
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins',
-                        color: Colors.white),
-                  ),
-                ),
+                if (currentQuestionIndex > 0)
+                  TextButton(
+                    onPressed: _previousQuestion,
+                    child: const Text(
+                      'Kembali',
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          color: Colors.white),
+                    ),
+                  )
+                else
+                  const Spacer(),
                 TextButton(
                   onPressed: _nextQuestion,
-                  child: const Text(
-                    'Lanjut',
-                    style: TextStyle(
+                  child: Text(
+                    currentQuestionIndex == surveyQuestions.length - 1
+                        ? 'Selesai'
+                        : 'Lanjut',
+                    style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Poppins',
@@ -167,7 +166,8 @@ class ScreeningPageState extends State<ScreeningPage> {
     );
   }
 
-  Widget _buildOptionButton(String text, bool isSelected) {
+  Widget _buildOptionButton(String text, String value) {
+    bool isSelected = selectedAnswers[currentQuestionIndex] == value;
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 20),
       child: SizedBox(
@@ -175,17 +175,25 @@ class ScreeningPageState extends State<ScreeningPage> {
         height: 53,
         child: ElevatedButton(
           onPressed: () {
-            _logger.info('$text dipilih');
-            // Mengubah status pilihan
+            // Jika jawaban sudah dipilih, klik ulang untuk menghapus
             setState(() {
-              selectedAnswer = text; // Mengatur jawaban yang dipilih
+              if (isSelected) {
+                // Hapus jawaban jika tombol diklik lagi
+                selectedAnswers.remove(currentQuestionIndex);
+                _logger.info('$text dihapus');
+              } else {
+                // Set jawaban jika tombol diklik pertama kali
+                selectedAnswers[currentQuestionIndex] = value;
+                _logger.info('$text dipilih');
+              }
             });
           },
           style: ElevatedButton.styleFrom(
             foregroundColor:
                 isSelected ? Colors.white : const Color(0xFF5F5F5F),
-            backgroundColor:
-                isSelected ? const Color(0xFF2D6974) : Colors.white,
+            backgroundColor: isSelected
+                ? const Color(0xFF2D6974)
+                : Colors.white, // Hijau untuk dipilih
             padding: const EdgeInsets.symmetric(vertical: 0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -203,12 +211,10 @@ class ScreeningPageState extends State<ScreeningPage> {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
+                style: const TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Poppins'),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
