@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
       ],
-      child: BlocBuilder<ThemeCubit,ThemeMode>(
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, mode) => MaterialApp(
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode : mode,
+            themeMode: mode,
             debugShowCheckedModeBanner: false,
             home: const SplashPage()),
       ),
