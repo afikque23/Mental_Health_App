@@ -1,6 +1,7 @@
-# cloning_spotify
+# Mental_Health_App
 
-A new Flutter project.
+This is Project in Program PBL (Project Based Learning) that held in State Polithecnic of Semarang.
+This Project being worked by one team that have 9 member of Student of Polines.
 
 ## Getting Started
 
