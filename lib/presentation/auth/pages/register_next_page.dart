@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-import 'package:mental_health_app/presentation/login/pages/login_page.dart';
+import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:intl/intl.dart';
-import 'package:mental_health_app/screening.dart';
+import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
+import 'package:mental_health_app/presentation/intro/pages/screening.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class RegisterNextPage extends StatefulWidget {
+  const RegisterNextPage({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _RegisterPageState createState() => _RegisterPageState();
+  _RegisterNextPageState createState() => _RegisterNextPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterNextPageState extends State<RegisterNextPage> {
   String? _selectedGender;
   final _dateController = TextEditingController();
 
@@ -27,10 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ListView.builder(
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              return Column(
+          child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 32),
@@ -46,78 +44,44 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(height: 35),
-                  _buildInputField("Nama Pengguna", "Nama Lengkap"),
-                  const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                child: Text(
-                  "Email",
-                  style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'contoh@gmail.com',
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-                  _buildInputField("Password", "Password", isPassword: true),
-                  _buildInputField("Konfirmasi Password", "Konfirmasi Password", isPassword: true),
                   _buildGenderDropdown(),
                   _buildDatePicker(),
+                  Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (
+                                  context) => const RegisterPage(
+                                )
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Kembali',
+                            style: TextStyle(
+                                color: AppColors.textButtonColor,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                    ],
+              ),
                   const SizedBox(height: 20),
                   _buildRegisterButton(),
-                  const SizedBox(height: 16),
+                  const Spacer(),
                   _buildLoginPrompt(),
                 ],
-              );
-            },
-          ),
+              )
         ),
       ),
-    );
-  }
-
-  Widget _buildInputField(String label, String hintText, {bool isPassword = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          child: Text(
-            label,
-            style: const TextStyle(
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: TextField(
-            obscureText: isPassword,
-            decoration: InputDecoration(
-              labelText: hintText,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(35),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-      ],
     );
   }
 
@@ -249,7 +213,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: const Text(
             'Masuk',
             style: TextStyle(
-              color: AppColors.lineColor,
+              color: AppColors.textButtonColor,
               fontSize: 16,
               fontWeight: FontWeight.w500,
               fontFamily: 'Poppins',

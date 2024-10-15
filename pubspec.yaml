@@ -42,6 +42,7 @@ dependencies:
   path_provider: ^2.1.4
   introduction_screen: ^3.1.14
   shared_preferences: ^2.3.2
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -181,7 +182,9 @@ flutter:
           style: italic
         - asset: assets/fonts/Poppins-Thin.otf
           weight: 100
-
+    - family: Coiny
+      fonts:
+        - asset: assets/fonts/Coiny-Cyrillic.ttf
 
   #   - family: Trajan Pro
   #     fonts:

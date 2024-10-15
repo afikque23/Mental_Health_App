@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 
 class ScreeningPage extends StatefulWidget {
   const ScreeningPage({super.key});
@@ -138,7 +139,7 @@ class ScreeningPageState extends State<ScreeningPage> {
                       'Kembali',
                       style: TextStyle(
                           fontSize: 17,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins',
                           color: Colors.white),
                     ),
@@ -146,7 +147,19 @@ class ScreeningPageState extends State<ScreeningPage> {
                 else
                   const Spacer(),
                 TextButton(
-                  onPressed: _nextQuestion,
+                  onPressed: () {
+                    if (currentQuestionIndex == surveyQuestions.length - 1) {
+                      // Jika sudah di pertanyaan terakhir, navigasi ke homepage.dart
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  BottomNavbar()),
+                      );
+                    } else {
+                      // Lanjut ke pertanyaan berikutnya
+                      _nextQuestion();
+                    }
+                  },
                   child: Text(
                     currentQuestionIndex == surveyQuestions.length - 1
                         ? 'Selesai'
@@ -198,7 +211,7 @@ class ScreeningPageState extends State<ScreeningPage> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            elevation: 3,
+            elevation: 20,
           ),
           child: Padding(
             padding: const EdgeInsets.only(

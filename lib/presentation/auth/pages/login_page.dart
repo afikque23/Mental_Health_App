@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-import 'package:mental_health_app/presentation/login/pages/register_page.dart';
-import 'package:mental_health_app/screening.dart';
+import 'package:mental_health_app/presentation/auth/pages/lupa_password_page.dart';
+import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
+import 'package:mental_health_app/presentation/intro/pages/screening.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -105,7 +106,16 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 16),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (
+                            context) => const LupaPasswordPage(
+                          )
+                        ),
+                      );
+                  },
                   child: const Text(
                     'Lupa password?',
                     style: TextStyle(
@@ -141,7 +151,7 @@ class LoginPage extends StatelessWidget {
                     child: const Text(
                       'Daftar',
                       style: TextStyle(
-                          color: AppColors.lineColor,
+                          color: AppColors.textButtonColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           fontFamily: 'Poppins'),

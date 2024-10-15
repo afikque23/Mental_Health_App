@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:mental_health_app/presentation/login/pages/login_page.dart';
+import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
+import 'package:mental_health_app/core/configs/assets/app_images.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -21,7 +22,7 @@ class OnBoarding extends StatelessWidget {
         PageViewModel(
           title: "Selamat datang di [MentalHealth.care]! ",
           bodyWidget: _buildBody(
-            'https://images.squarespace-cdn.com/content/v1/5d01440fc4bd93000125725d/1618502557280-0LCMJOM1UKE0NADLT37L/Recruiter-Illustration-KB-NoStroke.png',
+            AppImages.onboarding1,
             'Kami disini mendukung dan menjaga kesehatan mental anda.',
           ),
           decoration: pageDecoration,
@@ -29,7 +30,7 @@ class OnBoarding extends StatelessWidget {
         PageViewModel(
           title: "Jadikan Membaca Sebagai Kebiasaan",
           bodyWidget: _buildBody(
-            'https://images.squarespace-cdn.com/content/v1/5d01440fc4bd93000125725d/1618502557280-0LCMJOM1UKE0NADLT37L/Recruiter-Illustration-KB-NoStroke.png',
+            AppImages.onboarding2,
             'Dengan membaca, Anda akan menemukan cara baru memahami dan mengelola perasaan.',
           ),
           decoration: pageDecoration,
@@ -37,7 +38,7 @@ class OnBoarding extends StatelessWidget {
         PageViewModel(
           title: "Berpikir Positif",
           bodyWidget: _buildBody(
-            'https://images.squarespace-cdn.com/content/v1/5d01440fc4bd93000125725d/1618502557280-0LCMJOM1UKE0NADLT37L/Recruiter-Illustration-KB-NoStroke.png',
+            AppImages.onboarding3,
             'Pikiran yang positif, akan membuat perubahan suasana hati dan cara menghadapi tantangan.',
           ),
           decoration: pageDecoration,
@@ -95,8 +96,7 @@ class OnBoarding extends StatelessWidget {
                   fontFamily: 'Poppins',
                 )),
           )),
-      done: 
-      Container(
+      done: Container(
           width: 95,
           height: 35,
           padding: const EdgeInsets.symmetric(),
@@ -126,7 +126,7 @@ class OnBoarding extends StatelessWidget {
 
 _buildBody(String image, String text) {
   return Column(children: [
-    Image.network(image, width: 350),
+    Image.asset(image, width: 350),
     const SizedBox(
       height: 20,
     ),
