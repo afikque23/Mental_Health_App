@@ -7,4 +7,8 @@ class AppVectors {
   static const String topPattern = '${basePath}top_pattern$format';
   static const String bottomPattern = '${basePath}bottom_pattern$format';
   static const String logoSementara = '${basePath}logo_mentalhealth$format';
+  static const String home = '${basePath}home$format';
+  static const String article = '${basePath}article$format';
+  static const String tracker = '${basePath}tracker$format';
+  static const String profile = '${basePath}profile$format';
 }

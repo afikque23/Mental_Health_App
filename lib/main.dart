@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:mental_health_app/core/configs/theme/app_theme.dart';
-import 'package:mental_health_app/presentation/choose_mode/bloc/theme_cubit.dart';
+import 'package:mental_health_app/presentation/splash/bloc/theme_cubit.dart';
 import 'package:mental_health_app/presentation/splash/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

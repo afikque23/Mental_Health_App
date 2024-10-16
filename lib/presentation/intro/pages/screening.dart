@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'package:mental_health_app/homepage.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 
 class ScreeningPage extends StatefulWidget {
   const ScreeningPage({super.key});
@@ -153,7 +153,7 @@ class ScreeningPageState extends State<ScreeningPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomePage()),
+                            builder: (context) =>  BottomNavbar()),
                       );
                     } else {
                       // Lanjut ke pertanyaan berikutnya

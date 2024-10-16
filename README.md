@@ -1,7 +1,12 @@
 # Mental_Health_App
 
-This is Project in Program PBL (Project Based Learning) that held in State Polithecnic of Semarang.
-This Project being worked by one team that have 9 member of Student of Polines.
+
+بسم الله الرحمن الرحيم
+
+Mental_Health_ App Project is Project from PBL(Project Based Learnig) Program that held in State Polytechnic of Semarang.
+This Project worked by Student of Polines from IK-2B Class
+
+# Author: [IvonLep, Zabaniya, PenOp, Gus e, Arya, Yafi, Safa, Fani, Tufi]
 
 ## Getting Started
 
