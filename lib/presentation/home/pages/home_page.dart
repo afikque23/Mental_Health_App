@@ -4,7 +4,6 @@ import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +51,8 @@ class HomePage extends StatelessWidget {
                                       decoration: InputDecoration(
                                         hintText: 'Cari artikel disini...',
                                         hintStyle: TextStyle(
-                                          color: AppColors.grey,
-                                          fontSize: 12
-                                        ),
+                                            color: AppColors.grey,
+                                            fontSize: 12),
                                         border: InputBorder.none,
                                       ),
                                     ),
@@ -104,7 +102,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-
           // Main Content
           Expanded(
             child: Container(
