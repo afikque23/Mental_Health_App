@@ -64,21 +64,6 @@ class TrackerPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Gambar di atas header
-                    Positioned(
-                      bottom: -70, // Atur posisi gambar sesuai keinginan
-                      child: Container(
-                        height: 180, // Tinggi gambar
-                        width: 180, // Lebar gambar
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(AppImages.trackerimage),
-                            fit: BoxFit
-                                .cover, // Atur gambar agar sesuai dengan kontainer
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -170,6 +155,21 @@ class TrackerPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          // Gambar di luar header hijau, dengan posisi yang bisa diatur
+          Positioned(
+            left: 113, // Atur posisi gambar dari kiri
+            top: 165, // Atur posisi gambar dari atas
+            child: Container(
+              height: 180, // Tinggi gambar
+              width: 180, // Lebar gambar
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(AppImages.imagetracker),
+                  fit: BoxFit.cover, // Atur gambar agar sesuai dengan kontainer
+                ),
+              ),
+            ),
           ),
           Positioned(
             left: 305, // Jarak dari kiri
