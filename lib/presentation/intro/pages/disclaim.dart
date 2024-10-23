@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mental_health_app/core/configs/assets/app_vectors.dart';
-import 'package:mental_health_app/presentation/intro/pages/screening.dart'; // Pastikan ini adalah path yang benar
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
+import 'package:mental_health_app/core/configs/assets/app_vectors.dart'; // Pastikan ini adalah path yang benar
 
 class DisclaimerPage extends StatelessWidget {
   const DisclaimerPage({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class DisclaimerScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              const SurveyScreen(), // Ganti dengan nama halaman yang sesuai
+                              BottomNavbar(), // Ganti dengan nama halaman yang sesuai
                         ),
                       );
                     },
