@@ -8,5 +8,7 @@ class AppImages {
   static const String onboarding2 = '${basePath}onboarding_2.png';
   static const String onboarding3 = '${basePath}onboarding_3.png';
   static const String homeAppbar = '${basePath}appbar_home.png';
+  static const String trackerimage = '${basePath}trackerimage.png';
+  static const String plustracker = '${basePath}add.png';
 
 }
