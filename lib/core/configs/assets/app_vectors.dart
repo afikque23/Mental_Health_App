@@ -11,4 +11,19 @@ class AppVectors {
   static const String article = '${basePath}article$format';
   static const String tracker = '${basePath}tracker$format';
   static const String profile = '${basePath}profile$format';
+  static const String dekorasidisclaim1 = '${basePath}dekorasi_disclaimer_1$format';
+  static const String dekorasidisclaim2 = '${basePath}dekorasi_disclaimer_2$format';
+  static const String trackergambar = '${basePath}trackergambar$format';
+  static const String tandatanya = '${basePath}tanda_tanya_tracker$format';
+  static const String semangat = '${basePath}semangat_tracker$format';
+  static const String bahagia = '${basePath}bahagia_tracker$format';
+  static const String senang = '${basePath}senang_tracker$format';
+  static const String normal = '${basePath}normal_tracker$format';
+  static const String bosan = '${basePath}bosan_tracker$format';
+  static const String cemas = '${basePath}cemas_tracker$format';
+  static const String stress = '${basePath}stress_tracker$format';
+  static const String marah = '${basePath}marah_tracker$format';
+  static const String sedih = '${basePath}sedih_tracker$format';
+  static const String putusasa = '${basePath}putus_asa_tracker$format';
+  static const String plustracker = '${basePath}pluples_tracker$format';
 }

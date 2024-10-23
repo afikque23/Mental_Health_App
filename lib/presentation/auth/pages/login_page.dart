@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/lupa_password_page.dart';
 import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
-import 'package:mental_health_app/presentation/intro/pages/screening.dart';
+import 'package:mental_health_app/presentation/intro/pages/disclaim.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -82,9 +82,11 @@ class LoginPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ScreeningPage()),
-            );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const DisclaimerPage()), // Ganti ke DisclaimerPage
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
@@ -108,13 +110,10 @@ class LoginPage extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (
-                            context) => const LupaPasswordPage(
-                          )
-                        ),
-                      );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LupaPasswordPage()),
+                    );
                   },
                   child: const Text(
                     'Lupa password?',
@@ -142,10 +141,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (
-                            context) => const RegisterPage(
-                          )
-                        ),
+                            builder: (context) => const RegisterPage()),
                       );
                     },
                     child: const Text(

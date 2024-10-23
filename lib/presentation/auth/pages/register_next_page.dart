@@ -3,7 +3,7 @@ import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:intl/intl.dart';
 import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
-import 'package:mental_health_app/presentation/intro/pages/screening.dart';
+import 'package:mental_health_app/presentation/intro/pages/disclaim.dart';
 
 class RegisterNextPage extends StatefulWidget {
   const RegisterNextPage({super.key});
@@ -27,60 +27,56 @@ class _RegisterNextPageState extends State<RegisterNextPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 32),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      'Daftar Akun',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
-                      ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 32),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'Daftar Akun',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
                     ),
                   ),
-                  const SizedBox(height: 35),
-                  _buildGenderDropdown(),
-                  _buildDatePicker(),
-                  Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (
-                                  context) => const RegisterPage(
-                                )
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            'Kembali',
-                            style: TextStyle(
-                                color: AppColors.textButtonColor,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins'),
-                          ),
+                ),
+                const SizedBox(height: 35),
+                _buildGenderDropdown(),
+                _buildDatePicker(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Kembali',
+                          style: TextStyle(
+                              color: AppColors.textButtonColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins'),
                         ),
                       ),
-                    ],
-              ),
-                  const SizedBox(height: 20),
-                  _buildRegisterButton(),
-                  const Spacer(),
-                  _buildLoginPrompt(),
-                ],
-              )
-        ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                _buildRegisterButton(),
+                const Spacer(),
+                _buildLoginPrompt(),
+              ],
+            )),
       ),
     );
   }
@@ -161,15 +157,17 @@ class _RegisterNextPageState extends State<RegisterNextPage> {
     );
   }
 
-  Widget _buildRegisterButton() {
+ Widget _buildRegisterButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ScreeningPage()),
-            );
+            context,
+            MaterialPageRoute(
+              builder: (context) => const DisclaimerPage(), // Ganti ke DisclaimerPage
+            ),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
