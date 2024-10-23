@@ -153,7 +153,8 @@ class ScreeningPageState extends State<ScreeningPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>  BottomNavbar()),
+                            builder: (context) =>  BottomNavbar(
+                            )),
                       );
                     } else {
                       // Lanjut ke pertanyaan berikutnya

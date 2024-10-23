@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
+import 'package:mental_health_app/core/configs/assets/app_vectors.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -52,9 +55,8 @@ class HomePage extends StatelessWidget {
                                       decoration: InputDecoration(
                                         hintText: 'Cari artikel disini...',
                                         hintStyle: TextStyle(
-                                          color: AppColors.grey,
-                                          fontSize: 12
-                                        ),
+                                            color: AppColors.grey,
+                                            fontSize: 12),
                                         border: InputBorder.none,
                                       ),
                                     ),
@@ -105,49 +107,167 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
+
+
           // Main Content
           Expanded(
             child: Container(
-              color: Colors.green[50],
-              child: ListView(
-                padding: const EdgeInsets.all(16),
-                children: [
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Artikel untuk anda',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              color: AppColors.primaryBackground,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    const SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BottomNavbar()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          maximumSize: const Size(350, 60),
+                          backgroundColor: AppColors.primary,
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              AppVectors.howAreYou,
+                              width: 28,
+                              height: 28,
+                            ),
+                            const SizedBox(width: 5),
+                            const Text(
+                              'Bagaimana Perasaan mu Hari ini ?',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  for (int i = 0; i < 2; i++)
-                    Container(
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Center(
+                      child: Text(
+                        '"Ingatlah, Impian setiap orang tidak akan pernah berakhir, zehahahahaha!"',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Center(
+                      child: Text(
+                        '-Marshal D. Teach A.K.A Kurohige-',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 120),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Artikel untuk Anda   >',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: AppColors.primary,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Card(
                       margin: const EdgeInsets.only(bottom: 16),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Judul Artikel',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                        // Image container with heart icon
+                          Stack(
+                            children: [
+                              Container(
+                                height: 200,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 8,
+                                right: 8,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.black,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry\'s standard dummy text ever since the 1500s.',
-                            style: TextStyle(color: Colors.grey),
+                          // Article content
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Judul Artikel',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ],
+                              ),
                           ),
                         ],
                       ),
-                    ),
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

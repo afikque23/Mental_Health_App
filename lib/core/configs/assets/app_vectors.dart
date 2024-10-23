@@ -11,4 +11,5 @@ class AppVectors {
   static const String article = '${basePath}article$format';
   static const String tracker = '${basePath}tracker$format';
   static const String profile = '${basePath}profile$format';
+  static const String howAreYou = '${basePath}how_are_you_today$format';
 }
