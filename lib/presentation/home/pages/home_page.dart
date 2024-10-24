@@ -5,8 +5,131 @@ import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/assets/app_vectors.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 
+// Contoh halaman artikel (Anda bisa ganti dengan halaman artikel yang sebenarnya)
+class ArticleList extends StatelessWidget {
+  final String title;
+  const ArticleList({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text('Halaman artikel: $title')),
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  // Data artikel dengan informasi navigasi
+  final List<Map<String, dynamic>> articles = const [
+    {
+      "title": "Mengatasi Stress",
+      "content": "Tips dan trik mengatasi stress dalam kehidupan sehari-hari...",
+      "route": "/artikel-stress",
+      "pageBuilder": ArticleList(title: "Mengatasi Stress"),
+    },
+    {
+      "title": "Meditasi untuk Pemula",
+      "content": "Panduan lengkap meditasi untuk pemula yang ingin memulai...",
+      "route": "/artikel-meditasi",
+      "pageBuilder": ArticleList(title: "Meditasi untuk Pemula"),
+    },
+    {
+      "title": "Pola Tidur Sehat",
+      "content": "Bagaimana menciptakan pola tidur yang sehat dan berkualitas...",
+      "route": "/artikel-tidur",
+      "pageBuilder": ArticleList(title: "Pola Tidur Sehat"),
+    },
+    {
+      "title": "Nutrisi untuk Mental",
+      "content": "Makanan yang dapat membantu meningkatkan kesehatan mental...",
+      "route": "/artikel-nutrisi",
+      "pageBuilder": ArticleList(title: "Nutrisi untuk Mental"),
+    },
+    {
+      "title": "Olahraga dan Mental",
+      "content": "Hubungan antara aktivitas fisik dan kesehatan mental...",
+      "route": "/artikel-olahraga",
+      "pageBuilder": ArticleList(title: "Olahraga dan Mental"),
+    },
+  ];
+
+  void _navigateToArticle(BuildContext context, Map<String, dynamic> article) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => article["pageBuilder"],
+      ),
+    );
+  }
+
+  Widget _buildArticleCard(BuildContext context, Map<String, dynamic> article) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      width: 404,
+      height: 179,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: GestureDetector(
+        onTap: () => _navigateToArticle(context, article),
+        child: Row(
+          children: [
+            Container(
+              width: 146,
+              height: 179,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                ),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.favorite_border),
+                onPressed: () {},
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only( right: 15, top: 15, bottom: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article["title"] ?? "Judul Artikel",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      article["content"] ?? "Lorem Ipsum...",
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +151,11 @@ class HomePage extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.only(left: 5),
                           child: CircleAvatar(
-                            //bagian tompol profil masih unfungsi
                             backgroundColor: Colors.grey,
                             radius: 24,
                           ),
                         ),
                         Expanded(
-                          //BAGIAN SEARCH COY
                           child: Container(
                             width: 276,
                             height: 34,
@@ -73,7 +194,7 @@ class HomePage extends StatelessWidget {
                             Icons.notifications,
                             color: Colors.white,
                           ),
-                        ), //Tombol Notif AppBar, masih unfungsi
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -106,8 +227,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-
-
 
           // Main Content
           Expanded(
@@ -201,71 +320,9 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Card(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                        // Image container with heart icon
-                          Stack(
-                            children: [
-                              Container(
-                                height: 200,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(12),
-                                    topRight: Radius.circular(12),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 8,
-                                right: 8,
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.black,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ],
-                          ),
-                          // Article content
-                          Padding(
-                            padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'Judul Artikel',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                          ),
-                        ],
-                      ),
-                    )
+                    const SizedBox(height: 16),
+                    // List artikel menggunakan ListView.builder
+                    ...articles.map((article) => _buildArticleCard(context, article)).toList(),
                   ],
                 ),
               ),

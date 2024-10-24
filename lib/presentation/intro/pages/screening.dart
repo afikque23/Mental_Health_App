@@ -1,240 +1,375 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 
-class ScreeningPage extends StatefulWidget {
-  const ScreeningPage({super.key});
+class ScreeningPage extends StatelessWidget {
+  final Widget body;
+  final Color headerColor;
+  final Color bodyColor;
 
-  @override
-  ScreeningPageState createState() => ScreeningPageState();
-}
-
-class ScreeningPageState extends State<ScreeningPage> {
-  final _logger = Logger('MoodSurveyScreen'); // Create logger instance
-
-  int currentQuestionIndex = 0;
-  Map<int, String?> selectedAnswers =
-      {}; // Menyimpan jawaban untuk setiap pertanyaan
-
-  final List<Map<String, String>> surveyQuestions = [
-    {
-      "question":
-          "Seberapa sering Anda merasa sedih, tertekan, atau putus asa?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda mengalami kesulitan untuk tertidur, sulit tertidur, atau terlalu banyak tidur?",
-    },
-    {
-      "question": "Seberapa sering Anda merasa lelah atau kekurangan energi?",
-    },
-    {
-      "question": "Seberapa sering Anda merasa gugup, cemas, atau gelisah?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda tidak mampu menghentikan atau mengendalikan rasa khawatir?",
-    },
-    {
-      "question": "Seberapa sering Anda mengalami kesulitan bersantai?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda merasa gelisah sehingga sulit untuk duduk diam?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda menyadari bahwa Anda tidak mampu mengatasi semua hal yang harus Anda lakukan?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda marah karena hal-hal di luar kendali Anda?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda merasakan kesulitan yang menumpuk begitu tinggi sampai Anda tidak dapat mengatasinya?",
-    },
-    {
-      "question": "Seberapa sering Anda merasa yakin dengan kemampuan Anda?",
-    },
-    {
-      "question": "Seberapa sering Anda merasa puas dengan diri sendiri?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda merasa bahwa Anda memiliki sejumlah sifat baik?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda merasa bahwa Anda memiliki seseorang yang dapat Anda mintai dukungan emosional?",
-    },
-    {
-      "question":
-          "Seberapa sering Anda merasa menjadi bagian dari suatu komunitas atau kelompok sosial?",
-    },
-    {
-      "question":
-          "Seberapa sering kamu merasa ada orang yang benar-benar memahamimu?",
-    },
-  ];
-
-  void _nextQuestion() {
-    if (currentQuestionIndex < surveyQuestions.length - 1) {
-      setState(() {
-        currentQuestionIndex++;
-      });
-    } else {
-      // Gunakan logger alih-alih print
-      _logger.info('Survei selesai');
-    }
-  }
-
-  void _previousQuestion() {
-    if (currentQuestionIndex > 0) {
-      setState(() {
-        currentQuestionIndex--;
-      });
-    }
-  }
+  const ScreeningPage({
+    super.key,
+    required this.body,
+    this.headerColor = const Color(0xFF8FD7C1),
+    this.bodyColor = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
+    List<double> sizes = [110, 140, 150, 160, 170, 180];
+    List<Offset> positions = [
+      const Offset(-60, 30),
+      const Offset(130, -90),
+      const Offset(250, 130),
+      const Offset(140, 180),
+      const Offset(330, -110),
+      const Offset(220, 280),
+    ];
+
     return Scaffold(
-      backgroundColor: const Color(0xFF68B39F),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 90, 16, 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 5),
-              child: Text(
-                surveyQuestions[currentQuestionIndex]['question']!,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins',
-                    color: Colors.white),
-                textAlign: TextAlign.left,
+      body: Stack(
+        children: [
+          Container(
+            color: bodyColor,
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 233,
+              decoration: BoxDecoration(
+                color: headerColor,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
+              child: Stack(
+                children: List.generate(6, (index) {
+                  return Positioned(
+                    top: positions[index].dy,
+                    left: positions[index].dx,
+                    child: Container(
+                      width: sizes[index],
+                      height: sizes[index],
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.14),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  );
+                }),
               ),
             ),
-            const SizedBox(height: 40),
-            _buildOptionButton('1. Tidak pernah', '1. Tidak pernah'),
-            const SizedBox(height: 23),
-            _buildOptionButton('2. Jarang', '2. Jarang'),
-            const SizedBox(height: 23),
-            _buildOptionButton('3. Cukup Sering', '3. Cukup Sering'),
-            const SizedBox(height: 23),
-            _buildOptionButton('4. Sering', '4. Sering'),
-            const SizedBox(height: 23),
-            _buildOptionButton('5. Sangat Sering', '5. Sangat Sering'),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (currentQuestionIndex > 0)
-                  TextButton(
-                    onPressed: _previousQuestion,
-                    child: const Text(
-                      'Kembali',
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          color: Colors.white),
-                    ),
-                  )
-                else
-                  const Spacer(),
-                TextButton(
-                  onPressed: () {
-                    if (currentQuestionIndex == surveyQuestions.length - 1) {
-                      // Jika sudah di pertanyaan terakhir, navigasi ke homepage.dart
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  BottomNavbar(
-                            )),
-                      );
-                    } else {
-                      // Lanjut ke pertanyaan berikutnya
-                      _nextQuestion();
-                    }
-                  },
-                  child: Text(
-                    currentQuestionIndex == surveyQuestions.length - 1
-                        ? 'Selesai'
-                        : 'Lanjut',
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
-                        color: Colors.white),
-                  ),
-                ),
-              ],
+          ),
+          SafeArea(
+            child: body,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class QuestionCard extends StatelessWidget {
+  final String questionText;
+  final int currentQuestionIndex;
+  final int totalQuestions;
+
+  const QuestionCard({
+    super.key,
+    required this.questionText,
+    required this.currentQuestionIndex,
+    required this.totalQuestions,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+          left: 16.0, top: 30.0, right: 16.0, bottom: 16.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        width: 300,
+        height: 180,
+        margin: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 5), // Menambahkan SizedBox untuk jarak atas
+            Text(
+              'Question ${currentQuestionIndex + 1}/$totalQuestions',
+              style: const TextStyle(
+                color: Colors.teal,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              questionText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.teal,
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildOptionButton(String text, String value) {
-    bool isSelected = selectedAnswers[currentQuestionIndex] == value;
-    return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 20),
-      child: SizedBox(
-        width: 320,
-        height: 53,
-        child: ElevatedButton(
-          onPressed: () {
-            // Jika jawaban sudah dipilih, klik ulang untuk menghapus
-            setState(() {
-              if (isSelected) {
-                // Hapus jawaban jika tombol diklik lagi
-                selectedAnswers.remove(currentQuestionIndex);
-                _logger.info('$text dihapus');
-              } else {
-                // Set jawaban jika tombol diklik pertama kali
-                selectedAnswers[currentQuestionIndex] = value;
-                _logger.info('$text dipilih');
-              }
-            });
-          },
-          style: ElevatedButton.styleFrom(
-            foregroundColor:
-                isSelected ? Colors.white : const Color(0xFF5F5F5F),
-            backgroundColor: isSelected
-                ? const Color(0xFF2D6974)
-                : Colors.white, // Hijau untuk dipilih
-            padding: const EdgeInsets.symmetric(vertical: 0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            elevation: 20,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-              top: 15,
-              bottom: 15,
-              right: 100,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                text,
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Poppins'),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-            ),
-          ),
+class CustomRadio extends StatefulWidget {
+  final String label;
+  final String groupValue;
+  final ValueChanged<String> onChanged;
+
+  const CustomRadio({
+    super.key,
+    required this.label,
+    required this.groupValue,
+    required this.onChanged,
+  });
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _CustomRadioState createState() => _CustomRadioState();
+}
+
+class _CustomRadioState extends State<CustomRadio> {
+  @override
+  Widget build(BuildContext context) {
+    bool isSelected = widget.groupValue == widget.label;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      width: 240,
+      height: 48,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(
+          color: Colors.teal,
+          width: 2,
         ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.label,
+            style: const TextStyle(fontSize: 16.0),
+          ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Radio<String>(
+                value: widget.label,
+                groupValue: widget.groupValue,
+                onChanged: (value) {
+                  widget.onChanged(value!);
+                },
+              ),
+              if (isSelected)
+                const Icon(
+                  Icons.radio_button_checked,
+                  color: Colors.teal,
+                  size: 24,
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SurveyScreen(),
+    );
+  }
+}
+
+class SurveyScreen extends StatefulWidget {
+  const SurveyScreen({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _SurveyScreenState createState() => _SurveyScreenState();
+}
+
+class _SurveyScreenState extends State<SurveyScreen> {
+  int currentQuestionIndex = 0;
+  // List untuk menyimpan jawaban dari setiap pertanyaan
+  List<String> selectedOptions = List.filled(16, ''); // Ganti 16 dengan jumlah pertanyaan
+
+  final List<String> questions = [
+    "Seberapa sering Anda merasa sedih, tertekan, atau putus asa?",
+    "Seberapa sering Anda mengalami kesulitan untuk tertidur, sulit tertidur, atau terlalu banyak tidur?",
+    "Seberapa sering Anda merasa lelah atau kekurangan energi?",
+    "Seberapa sering Anda merasa gugup, cemas, atau gelisah?",
+    "Seberapa sering Anda tidak mampu menghentikan atau mengendalikan rasa khawatir?",
+    "Seberapa sering Anda mengalami kesulitan bersantai?",
+    "Seberapa sering Anda merasa gelisah sehingga sulit untuk duduk diam?",
+    "Seberapa sering Anda menyadari bahwa Anda tidak mampu mengatasi semua hal yang harus Anda lakukan?",
+    "Seberapa sering Anda marah karena hal-hal di luar kendali Anda?",
+    "Seberapa sering Anda merasakan kesulitan yang menumpuk begitu tinggi sampai Anda tidak dapat mengatasinya?",
+    "Seberapa sering Anda merasa yakin dengan kemampuan Anda?",
+    "Seberapa sering Anda merasa puas dengan diri sendiri?",
+    "Seberapa sering Anda merasa bahwa Anda memiliki sejumlah sifat baik?",
+    "Seberapa sering Anda merasa bahwa Anda memiliki seseorang yang dapat Anda mintai dukungan emosional?",
+    "Seberapa sering Anda merasa menjadi bagian dari suatu komunitas atau kelompok sosial?",
+    "Seberapa sering kamu merasa ada orang yang benar-benar memahamimu?",
+    // Tambahkan semua 16 pertanyaan
+  ];
+
+  void nextQuestion() {
+    setState(() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+      }
+    });
+  }
+
+  void previousQuestion() {
+    setState(() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreeningPage(
+      body: Column(
+        children: [
+          const SizedBox(height: 22),
+          QuestionCard(
+            questionText: questions[currentQuestionIndex],
+            currentQuestionIndex: currentQuestionIndex,
+            totalQuestions: questions.length,
+          ),
+          const SizedBox(height: 15),
+          // Menampilkan CustomRadio untuk setiap pilihan
+          CustomRadio(
+            label: 'Tidak Pernah',
+            groupValue: selectedOptions[currentQuestionIndex],
+            onChanged: (value) {
+              setState(() {
+                selectedOptions[currentQuestionIndex] = value; // Simpan jawaban
+              });
+            },
+          ),
+          const SizedBox(height: 17),
+          CustomRadio(
+            label: 'Jarang',
+            groupValue: selectedOptions[currentQuestionIndex],
+            onChanged: (value) {
+              setState(() {
+                selectedOptions[currentQuestionIndex] = value; // Simpan jawaban
+              });
+            },
+          ),
+          const SizedBox(height: 17),
+          CustomRadio(
+            label: 'Cukup Sering',
+            groupValue: selectedOptions[currentQuestionIndex],
+            onChanged: (value) {
+              setState(() {
+                selectedOptions[currentQuestionIndex] = value; // Simpan jawaban
+              });
+            },
+          ),
+          const SizedBox(height: 17),
+          CustomRadio(
+            label: 'Sering',
+            groupValue: selectedOptions[currentQuestionIndex],
+            onChanged: (value) {
+              setState(() {
+                selectedOptions[currentQuestionIndex] = value; // Simpan jawaban
+              });
+            },
+          ),
+          const SizedBox(height: 17),
+          CustomRadio(
+            label: 'Sangat Sering',
+            groupValue: selectedOptions[currentQuestionIndex],
+            onChanged: (value) {
+              setState(() {
+                selectedOptions[currentQuestionIndex] = value; // Simpan jawaban
+              });
+            },
+          ),
+          const SizedBox(height: 75),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (currentQuestionIndex > 0)
+                Padding(
+                  padding: const EdgeInsets.only(left: 27.0), // Jarak dari kiri
+                  child: GestureDetector(
+                    onTap: previousQuestion,
+                    child: const Text(
+                      'Kembali',
+                      style: TextStyle(
+                        color: Colors.teal,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              const Spacer(), // Memisahkan antara "Kembali" dan "Lanjut"
+              Padding(
+                padding: const EdgeInsets.only(right: 27.0), // Jarak dari kanan
+                child: GestureDetector(
+                  onTap: () {
+                    if (currentQuestionIndex == questions.length - 1) {
+                      // Jika ini adalah pertanyaan terakhir, navigasikan ke HomePage
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  BottomNavbar()),
+                      );
+                    } else {
+                      // Jika belum di pertanyaan terakhir, lanjutkan ke pertanyaan berikutnya
+                      nextQuestion();
+                    }
+                  },
+                  child: Text(
+                    currentQuestionIndex == questions.length - 1
+                        ? 'Selesai'
+                        : 'Lanjut',
+                    style: const TextStyle(
+                      color: Colors.teal,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
