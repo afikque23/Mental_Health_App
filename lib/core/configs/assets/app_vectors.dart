@@ -11,6 +11,7 @@ class AppVectors {
   static const String article = '${basePath}article$format';
   static const String tracker = '${basePath}tracker$format';
   static const String profile = '${basePath}profile$format';
+  static const String howAreYou = '${basePath}how_are_you_today$format';
   static const String dekorasidisclaim1 = '${basePath}dekorasi_disclaimer_1$format';
   static const String dekorasidisclaim2 = '${basePath}dekorasi_disclaimer_2$format';
   static const String trackergambar = '${basePath}trackergambar$format';
@@ -26,4 +27,6 @@ class AppVectors {
   static const String sedih = '${basePath}sedih_tracker$format';
   static const String putusasa = '${basePath}putus_asa_tracker$format';
   static const String plustracker = '${basePath}pluples_tracker$format';
+  static const String avatarProfile = '${basePath}profile_avatar$format';
+
 }

@@ -347,7 +347,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
                       // Jika ini adalah pertanyaan terakhir, navigasikan ke HomePage
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => BottomNavbar()),
+                        MaterialPageRoute(
+                            builder: (context) =>  BottomNavbar()),
                       );
                     } else {
                       // Jika belum di pertanyaan terakhir, lanjutkan ke pertanyaan berikutnya

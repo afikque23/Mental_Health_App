@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-import 'package:mental_health_app/presentation/intro/pages/screening.dart';
+import 'package:mental_health_app/presentation/tracker/pages/add_mood.dart';
 
 class TrackerPage extends StatelessWidget {
   const TrackerPage({super.key});
@@ -127,7 +127,7 @@ class TrackerPage extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: List.generate(31, (index) {
+                    children: List.generate(1195, (index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 11.0, horizontal: 22.0),
@@ -158,22 +158,22 @@ class TrackerPage extends StatelessWidget {
           ),
           // Gambar di luar header hijau, dengan posisi yang bisa diatur
           Positioned(
-            left: 113, // Atur posisi gambar dari kiri
-            top: 165, // Atur posisi gambar dari atas
+            left: 115, // Atur posisi gambar dari kiri
+            top: 160, // Atur posisi gambar dari atas
             child: Container(
               height: 180, // Tinggi gambar
               width: 180, // Lebar gambar
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(AppImages.imagetracker),
+                  image: AssetImage(AppImages.trackerimage),
                   fit: BoxFit.cover, // Atur gambar agar sesuai dengan kontainer
                 ),
               ),
             ),
           ),
           Positioned(
-            left: 305, // Jarak dari kiri
-            top: 595, // Jarak dari atas untuk menjaga jarak dengan header
+            left: 315, // Jarak dari kiri
+            top: 600, // Jarak dari atas untuk menjaga jarak dengan header
             child: GestureDetector(
               onTap: () {
                 // Aksi saat ikon ditekan
@@ -181,15 +181,15 @@ class TrackerPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const SurveyScreen()), // Navigasi ke halaman SurveyMood
+                          const AddMood()), // Navigasi ke halaman SurveyMood
                 );
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8, vertical: 12), // Padding untuk SVG
                 child: SizedBox(
-                  height: 80, // Tinggi ikon
-                  width: 80, // Lebar ikon
+                  height: 50, // Tinggi ikon
+                  width: 50, // Lebar ikon
                   child: Image.asset(AppImages.plustracker),
                 ),
               ),
