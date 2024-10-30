@@ -12,4 +12,5 @@ class AppImages {
   static const String trackerimage = '${basePath}trackerimage.png';
   static const String plustracker = '${basePath}add.png';
   static const String imagetracker = '${basePath}imagetracker.png';
+  static const String editprofile = '${basePath}EditProfile.png';
 }

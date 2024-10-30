@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/assets/app_vectors.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
+import 'package:mental_health_app/presentation/profile/pages/edit_profile_page.dart';
+import 'package:mental_health_app/presentation/profile/pages/favorite.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -63,7 +66,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                                 SizedBox(width: 8),
                                 Text(
-                                  "Notifikas",
+                                  "Notifikasi",
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
@@ -103,7 +106,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 340,
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const EditProfile()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
@@ -112,16 +120,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     side: const BorderSide(color: AppColors.lineColor, width: 2 ),
                     overlayColor: Colors.black
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.lock,
-                        color: Colors.black,
+                      Image.asset(
+                        AppImages.editprofile,
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        'Ganti Password',
+                      const SizedBox(width: 8),
+                      const Text(
+                        'Edit Profile',
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "inter",
@@ -136,7 +143,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 340,
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FavoritePage()
+                      )  
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: Colors.white,
@@ -158,6 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "inter",
+                          fontWeight: FontWeight.w400
                         ),
                       ),
                     ],

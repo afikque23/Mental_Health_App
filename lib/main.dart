@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:mental_health_app/core/configs/theme/app_theme.dart';
-import 'package:mental_health_app/presentation/profile/pages/edit_profile_page.dart';
 import 'package:mental_health_app/presentation/splash/bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:mental_health_app/presentation/splash/pages/splash.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme,
             themeMode: mode,
             debugShowCheckedModeBanner: false,
-            home: const EditProfile()),
+            home: const SplashPage()),
       ),
     );
   }

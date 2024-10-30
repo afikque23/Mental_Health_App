@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
-import 'package:mental_health_app/presentation/auth/pages/register_next_page.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
