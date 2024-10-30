@@ -121,7 +121,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       SizedBox(width: 8),
                       Text(
-                        'Ganti Password',
+                        'Edit Profil',
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "inter",

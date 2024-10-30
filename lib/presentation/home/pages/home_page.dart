@@ -26,7 +26,8 @@ class HomePage extends StatelessWidget {
   final List<Map<String, dynamic>> articles = const [
     {
       "title": "Mengatasi Stress",
-      "content": "Tips dan trik mengatasi stress dalam kehidupan sehari-hari...",
+      "content":
+          "Tips dan trik mengatasi stress dalam kehidupan sehari-hari...",
       "route": "/artikel-stress",
       "pageBuilder": ArticleList(title: "Mengatasi Stress"),
     },
@@ -38,7 +39,8 @@ class HomePage extends StatelessWidget {
     },
     {
       "title": "Pola Tidur Sehat",
-      "content": "Bagaimana menciptakan pola tidur yang sehat dan berkualitas...",
+      "content":
+          "Bagaimana menciptakan pola tidur yang sehat dan berkualitas...",
       "route": "/artikel-tidur",
       "pageBuilder": ArticleList(title: "Pola Tidur Sehat"),
     },
@@ -105,7 +107,7 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only( right: 15, top: 15, bottom: 15),
+                padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -204,7 +206,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 12, vertical: 0),
                             width: 210,
                             height: 100,
                             child: const Text(
@@ -214,7 +216,7 @@ class HomePage extends StatelessWidget {
                                   fontSize: 30,
                                   color: AppColors.primaryBackground),
                             )),
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 0),
                         Image.asset(
                           AppImages.homeAppbar,
                           width: 150,
@@ -323,7 +325,8 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 16),
                     // List artikel menggunakan ListView.builder
                     // ignore: unnecessary_to_list_in_spreads
-                    ...articles.map((article) => _buildArticleCard(context, article)).toList(),
+                    ...articles
+                        .map((article) => _buildArticleCard(context, article)),
                   ],
                 ),
               ),

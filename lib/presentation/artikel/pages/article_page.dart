@@ -213,10 +213,10 @@ class ArticlePage extends StatelessWidget {
                                   fontSize: 30,
                                   color: AppColors.primaryBackground),
                             )),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 0),
                         Image.asset(
                           AppImages.articleAppbar,
-                          width: 160,
+                          width: 150,
                           height: 126,
                         )
                       ],
@@ -262,7 +262,8 @@ class ArticlePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    SizedBox (height: 35, 
+                    SizedBox(
+                      height: 35,
                       child: Column(
                         children: [
                           const SizedBox(height: 0), // Menambahkan jarak atas
@@ -316,7 +317,7 @@ class ArticlePage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 120),
+                      padding: const EdgeInsets.only(right: 100),
                       child: TextButton(
                         onPressed: () {},
                         child: const Text(
