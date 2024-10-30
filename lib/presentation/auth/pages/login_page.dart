@@ -82,11 +82,11 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ElevatedButton(
                   onPressed: () {
-
-                  Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  const SurveyScreen()),
-                  );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SurveyScreen()),
+                    );
 
                     Navigator.push(
                       context,
@@ -94,7 +94,6 @@ class LoginPage extends StatelessWidget {
                           builder: (context) =>
                               const DisclaimerPage()), // Ganti ke DisclaimerPage
                     );
-
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
