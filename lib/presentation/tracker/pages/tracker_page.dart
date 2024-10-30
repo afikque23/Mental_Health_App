@@ -127,7 +127,7 @@ class TrackerPage extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: List.generate(1195, (index) {
+                    children: List.generate(3652, (index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 11.0, horizontal: 22.0),

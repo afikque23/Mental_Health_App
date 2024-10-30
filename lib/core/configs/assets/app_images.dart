@@ -22,4 +22,5 @@ class AppImages {
   static const String marah = '${basePath}marah.png';
   static const String sedih = '${basePath}sedih.png';
   static const String putusasa = '${basePath}putus_asa.png';
+  static const String disclaimer = '${basePath}disclaimer.png';
 }

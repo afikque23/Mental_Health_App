@@ -271,7 +271,7 @@ class ArticlePage extends StatelessWidget {
                             // Memastikan ListView menggunakan sisa ruang yang tersedia
                             child: ListView.builder(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 0),
                               scrollDirection: Axis.horizontal,
                               itemCount: 4,
                               itemBuilder: (context, index) {
