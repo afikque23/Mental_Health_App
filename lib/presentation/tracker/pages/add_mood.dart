@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-import 'package:mental_health_app/presentation/tracker/pages/tracker_page.dart';
 
 class AddMood extends StatelessWidget {
   const AddMood({super.key});
@@ -602,7 +602,7 @@ class AddMood extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const TrackerPage()),
+                                              BottomNavbar()),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
@@ -638,8 +638,7 @@ class AddMood extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const TrackerPage()),
+                                          builder: (context) => BottomNavbar()),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(

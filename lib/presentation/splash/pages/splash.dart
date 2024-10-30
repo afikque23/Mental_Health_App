@@ -22,13 +22,13 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(AppVectors.logoSementara),
+        child: SvgPicture.asset(AppVectors.logosplash),
       ),
     );
   }
 
   Future<void> redirect() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,
