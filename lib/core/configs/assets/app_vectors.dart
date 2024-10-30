@@ -30,4 +30,5 @@ class AppVectors {
   static const String plustracker = '${basePath}pluples_tracker$format';
   static const String avatarProfile = '${basePath}profile_avatar$format';
   static const String logo = '${basePath}logo_nuraga$format';
+  static const String editProfile = '${basePath}edit_profile$format';
 }

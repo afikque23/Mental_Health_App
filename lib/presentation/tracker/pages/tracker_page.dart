@@ -164,7 +164,7 @@ class TrackerPage extends StatelessWidget {
               width: 180, // Lebar gambar
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(AppImages.imagetracker),
+                  image: AssetImage(AppImages.trackerimage),
                   fit: BoxFit.cover, // Atur gambar agar sesuai dengan kontainer
                 ),
               ),
