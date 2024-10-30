@@ -1,11 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-// ignore: duplicate_ignore
-// ignore: unused_import
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-// ignore: duplicate_ignore
-// ignore: unused_import
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/presentation/auth/pages/register_next_page.dart';
 
