@@ -1,0 +1,168 @@
+[33mcommit 872b7c1edf8726a350f3e42c63c856f450f36b43[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32marya[m[33m, [m[1;31morigin/arya[m[33m)[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Thu Oct 24 06:35:54 2024 +0700
+
+    menambah gambar di tracker
+
+[33mcommit 5ffd3be5a6503951b52c25a7bc9f7338adc569fb[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Wed Oct 23 21:54:10 2024 +0700
+
+    menambah sedikit detail di tracker
+
+[33mcommit f1ec2b134a7a100c6a7690dcd53b7b7d831d5d9a[m[33m ([m[1;31morigin/nopal[m[33m)[m
+Author: Npal10 <nmawarfadhiilah@gmail.com>
+Date:   Wed Oct 23 19:49:25 2024 +0700
+
+    update profile
+
+[33mcommit 6eb6831f64ad54ba396773fc6acf794947abdd2d[m[33m ([m[1;32mnopal[m[33m)[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Wed Oct 23 14:19:14 2024 +0700
+
+    Menambahkan fitur disclaimer dan  mengubah screening serta menambah tampilan tracker
+
+[33mcommit c7425da80ba5a268329a11003b9784201100a005[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Fri Oct 18 08:38:51 2024 +0700
+
+    Update vscode settings.json
+
+[33mcommit 4bd3e1dc5d18af21a173e6f770ea3c47170d758f[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Wed Oct 16 20:29:46 2024 +0700
+
+    Menyelesaikan merge antara branch arya dan akmal
+
+[33mcommit 15f69303afccfdd6f3f899b0e88bd2f399fdb8ff[m
+Merge: 48823da e545a9f
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Wed Oct 16 20:24:26 2024 +0700
+
+    Merge branch 'akmal' of https://github.com/afikque23/Mental_Health_App into arya
+
+[33mcommit e545a9f27b3394e7b96885afddf861562fd4c705[m
+Merge: e5cdece 48997bc
+Author: Akahage <manungsho@gmail.com>
+Date:   Tue Oct 15 18:56:41 2024 +0700
+
+    ojo pull sek
+
+[33mcommit e5cdece25313eec5aa2bf79b9a60494a7c9b75b5[m
+Merge: 59de352 da9bab3
+Author: Akahage <manungsho@gmail.com>
+Date:   Tue Oct 15 18:52:26 2024 +0700
+
+    merombak folder, menambah appbar homepage, mengubah navbar, menambah lupa password
+
+[33mcommit 48823daf2478822e2a848367a96ad8b97b493b56[m
+Merge: da9bab3 48997bc
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Tue Oct 15 07:29:18 2024 +0700
+
+    Merge branch 'akmal' of https://github.com/afikque23/Mental_Health_App into arya
+
+[33mcommit 59de352d31693c4d6a1e3b1b23bd60a79551927c[m
+Author: Akahage <manungsho@gmail.com>
+Date:   Sun Oct 13 10:56:02 2024 +0700
+
+    pull arya
+
+[33mcommit da9bab3d72f37b1637b76454f8049731807bb49a[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Sun Oct 13 10:36:57 2024 +0700
+
+    Appbar doang
+
+[33mcommit 48997bc2d66296ea772aaf01bbd8756e2a477626[m
+Author: Akmal Zaini <163093405+Akahage@users.noreply.github.com>
+Date:   Sun Oct 13 10:19:10 2024 +0700
+
+    u README.md
+
+[33mcommit 48c5b5fdeb997c4d7482777d2a134c497addc092[m
+Author: Akmal Zaini <163093405+Akahage@users.noreply.github.com>
+Date:   Sun Oct 13 10:18:11 2024 +0700
+
+    Update README.md
+
+[33mcommit 5086a704b4a6258b70487aa6a214185a711165b8[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Wed Oct 9 08:15:21 2024 +0700
+
+    memperbaiki pilihan pd screening
+
+[33mcommit 7f53e15c9beb9ab27a4d211cdf352c31bddd921a[m
+Merge: 3cd0563 f97e9e6
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Mon Oct 7 14:49:35 2024 +0700
+
+    pull akmal
+
+[33mcommit 3cd0563eea864e9479e64aac1eac6553464dd253[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Mon Oct 7 14:41:47 2024 +0700
+
+    Merge branch 'akmal' of https://github.com/afikque23/Mental_Health_App into arya
+
+[33mcommit f97e9e685e2d58aacb5b64782beca7b8ac5200c5[m
+Merge: 1845e11 2400ff7
+Author: Akahage <manungsho@gmail.com>
+Date:   Mon Oct 7 14:36:02 2024 +0700
+
+    menggabungkan screening dg register
+
+[33mcommit 615f4da07517c0f986324b66e1e1e0d87ababa88[m
+Merge: bcc1f2b 1845e11
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Mon Oct 7 13:33:18 2024 +0700
+
+    Merge branch 'akmal' of https://github.com/afikque23/Mental_Health_App into arya
+
+[33mcommit bcc1f2b72a8716db611450058a59d7024182e204[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Mon Oct 7 13:19:04 2024 +0700
+
+    Menyimpan perubahan pada pubspec files sebelum merge
+
+[33mcommit 2400ff79ae4c96f3d7a23f045c39cc92385e678f[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Mon Oct 7 12:56:28 2024 +0700
+
+    screening pages
+
+[33mcommit 1845e115f3cb96290e6698f525d5677289619065[m
+Author: Akahage <manungsho@gmail.com>
+Date:   Sun Oct 6 08:56:32 2024 +0700
+
+    menambahkan scroll pada registerpage, dan mengembalikan konfirmasipassword
+
+[33mcommit 7ad382278f52e8df9ca924c85d645d14a70d59ef[m
+Author: Akahage <manungsho@gmail.com>
+Date:   Sun Oct 6 00:09:29 2024 +0700
+
+    Menambah kolom gender dan tgl lahir, tapi masih error belum bisa scroll. yang konfirmasi password tak comment dulu biar gak usah scroll
+
+[33mcommit dd236a7b252edeffaf12de971d940888b8b3b1b0[m
+Author: Akahage <manungsho@gmail.com>
+Date:   Fri Oct 4 21:25:50 2024 +0700
+
+    Menambahkan tampilan Register
+
+[33mcommit 5a93a71aabfee847c39a95cde9a636beaeac114b[m
+Author: Akahage <manungsho@gmail.com>
+Date:   Thu Oct 3 13:18:35 2024 +0700
+
+    upload master1
+
+[33mcommit e349b865dbb7ab28c0dc8bf920b2863aca5f4807[m
+Author: Zaini-tsu <akmalazzam123@gmail.com>
+Date:   Thu Oct 3 12:58:53 2024 +0700
+
+    menambahkan onboaring & login
+
+[33mcommit ab4d3e01560502e81391752536c34f4022461486[m[33m ([m[1;31morigin/vicki[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/alwy[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: afikque23 <aryayusufaagnilfikri@gmail.com>
+Date:   Thu Sep 26 13:49:04 2024 +0700
+
+    mengunggah file proyek

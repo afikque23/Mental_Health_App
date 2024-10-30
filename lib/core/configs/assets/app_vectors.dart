@@ -1,7 +1,6 @@
 class AppVectors {
   static const String basePath = 'assets/vectors/';
   static const String format = '.svg';
-  static const String logo = '${basePath}spotify_logo$format';
   static const String sun = '${basePath}sun$format';
   static const String moon = '${basePath}moon$format';
   static const String topPattern = '${basePath}top_pattern$format';
@@ -28,5 +27,6 @@ class AppVectors {
   static const String putusasa = '${basePath}putus_asa_tracker$format';
   static const String plustracker = '${basePath}pluples_tracker$format';
   static const String avatarProfile = '${basePath}profile_avatar$format';
+  static const String logo = '${basePath}logo_nuraga$format';
 
 }

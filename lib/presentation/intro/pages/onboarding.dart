@@ -20,7 +20,7 @@ class OnBoarding extends StatelessWidget {
       globalBackgroundColor: const Color(0xff68B39F),
       pages: [
         PageViewModel(
-          title: "Selamat datang di [MentalHealth.care]! ",
+          title: "Selamat datang di Nuraga ",
           bodyWidget: _buildBody(
             AppImages.onboarding1,
             'Kami disini mendukung dan menjaga kesehatan mental anda.',

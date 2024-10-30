@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(AppVectors.logoSementara),
+        child: SvgPicture.asset(AppVectors.logo),
       ),
     );
   }

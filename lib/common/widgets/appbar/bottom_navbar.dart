@@ -36,7 +36,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
       case 2:
         return const TrackerPage();
       case 3:
-        return const ProfilePage();
+        return  const ProfilePage();
       default:
         return const HomePage();
     }

@@ -262,35 +262,6 @@ class ArticlePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     SizedBox (height: 35, 
                       child: Column(
                         children: [
@@ -344,40 +315,6 @@ class ArticlePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     Padding(
                       padding: const EdgeInsets.only(right: 120),
                       child: TextButton(
@@ -397,6 +334,7 @@ class ArticlePage extends StatelessWidget {
                     // List artikel menggunakan ListView.builder
                     ...articles
                         .map((article) => _buildArticleCard(context, article))
+                        // ignore: unnecessary_to_list_in_spreads
                         .toList(),
                   ],
                 ),

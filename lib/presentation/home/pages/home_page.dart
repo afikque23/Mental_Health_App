@@ -322,6 +322,7 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     // List artikel menggunakan ListView.builder
+                    // ignore: unnecessary_to_list_in_spreads
                     ...articles.map((article) => _buildArticleCard(context, article)).toList(),
                   ],
                 ),
