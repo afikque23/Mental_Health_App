@@ -43,7 +43,7 @@ class DisclaimerScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 20),
-                        child: Image.asset(AppImages.articleAppbar),
+                        child: Image.asset(AppImages.disclaimer),
                       ),
                       const Text(
                         'Disclaimer !',

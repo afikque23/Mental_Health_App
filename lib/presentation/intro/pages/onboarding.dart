@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
+import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
