@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/presentation/auth/pages/register_next_page.dart';
@@ -82,37 +83,43 @@ class _EditProfileState extends State<EditProfile> {
                     ],
                   ),
                   child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 255, 255, 255),
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Ganti Password",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: "inter",
-                                  color: Colors.black),
-                            ),
-                            Spacer(),
-                            Icon(
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Ganti Password",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: "inter",
+                                color: Colors.black),
+                          ),
+                          const Spacer(),
+                          InkWell(
+                            onTap: () {
+                              // Kembali ke halaman sebelumnya saat ikon diklik
+                              Navigator.pop(context);
+                            },
+                            child: const Icon(
                               Icons.arrow_forward,
                               size: 20,
                               color: Colors.black,
                             ),
-                          ],
-                        ),
-                      )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const Spacer(),

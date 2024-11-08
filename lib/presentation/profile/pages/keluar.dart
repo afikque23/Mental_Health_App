@@ -4,14 +4,12 @@ class CustomAlertDialog extends StatelessWidget {
   final String message;
   final VoidCallback onConfirm;
   final VoidCallback onCancel;
-
   const CustomAlertDialog({
     Key? key,
     required this.message,
     required this.onConfirm,
     required this.onCancel,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Dialog(

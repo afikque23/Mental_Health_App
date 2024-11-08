@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-
-class ChangePasswordDialog extends StatefulWidget {
+class GantiPasswordPage extends StatefulWidget {
   final Function(String, String, String) onSubmit;
-
-  const ChangePasswordDialog({
+  const GantiPasswordPage({
     Key? key,
     required this.onSubmit,
   }) : super(key: key);
-
   @override
-  State<ChangePasswordDialog> createState() => _ChangePasswordDialogState();
+  State<GantiPasswordPage> createState() => _ChangePasswordDialogState();
 }
-
-class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
+class _ChangePasswordDialogState extends State<GantiPasswordPage> {
   final _oldPasswordController = TextEditingController();
   final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   bool _obscureOldPassword = true;
   bool _obscureNewPassword = true;
   bool _obscureConfirmPassword = true;
-
   @override
   void dispose() {
     _oldPasswordController.dispose();
@@ -27,7 +22,6 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
     _confirmPasswordController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -198,14 +192,13 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
     );
   }
 }
-
 // Helper function to show the dialog
 void showChangePasswordDialog(BuildContext context) {
   showDialog(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) {
-      return ChangePasswordDialog(
+      return GantiPasswordPage(
         onSubmit: (oldPassword, newPassword, confirmPassword) {
           // Add password change logic here
           print('Old Password: $oldPassword');
@@ -219,7 +212,6 @@ void showChangePasswordDialog(BuildContext context) {
     },
   );
 }
-
 // Example usage:
 // ElevatedButton(
 //   onPressed: () => showChangePasswordDialog(context),

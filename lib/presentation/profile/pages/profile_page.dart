@@ -27,9 +27,8 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(AppVectors.avatarProfile)
-              ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(AppVectors.avatarProfile)),
               const SizedBox(height: 20),
               const Text(
                 'Lorem Ipsum',
@@ -49,9 +48,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: 65,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(color: AppColors.lineColor, width: 2)
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        side: const BorderSide(
+                            color: AppColors.lineColor, width: 2)),
                     color: Colors.white,
                     child: Row(
                       children: [
@@ -109,22 +108,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const EditProfile()),
+                      MaterialPageRoute(
+                          builder: (context) => const EditProfile()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)) ,
-                    side: const BorderSide(color: AppColors.lineColor, width: 2 ),
-                    overlayColor: Colors.black
-                  ),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
                         AppImages.editprofile,
+                        width: 25,
+                        height: 25,
                       ),
                       const SizedBox(width: 8),
                       const Text(
@@ -145,20 +148,19 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FavoritePage()
-                      )  
-                    );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FavoritePage()));
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)) ,
-                    side: const BorderSide(color: AppColors.lineColor, width: 2 ),
-                    overlayColor: Colors.black
-                  ),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -170,10 +172,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text(
                         'Favorite',
                         style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "inter",
-                          fontWeight: FontWeight.w400
-                        ),
+                            fontSize: 18,
+                            fontFamily: "inter",
+                            fontWeight: FontWeight.w400),
                       ),
                     ],
                   ),
@@ -186,13 +187,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)) ,
-                    side: const BorderSide(color: AppColors.lineColor, width: 2 ),
-                    overlayColor: Colors.black
-                  ),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -219,13 +221,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)) ,
-                    side: const BorderSide(color: AppColors.lineColor, width: 2 ),
-                    overlayColor: Colors.black
-                  ),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

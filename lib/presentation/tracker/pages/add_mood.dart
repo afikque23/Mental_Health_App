@@ -1,10 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 
-class AddMood extends StatelessWidget {
+class AddMood extends StatefulWidget {
   const AddMood({super.key});
+
+  @override
+  _AddMoodState createState() => _AddMoodState();
+}
+
+class _AddMoodState extends State<AddMood> {
+  String displayedImage =
+      AppImages.sedih; // Gambar default menggunakan AppImages
+
+  final Map<String, String> moodImages = {
+    'semangat': AppImages.semangat,
+    'bahagia': AppImages.bahagia,
+    'senang': AppImages.senang,
+    'normal': AppImages.normal,
+    'bosan': AppImages.bosan,
+    'cemas': AppImages.cemas,
+    'stress': AppImages.stress,
+    'marah': AppImages.marah,
+    'sedih': AppImages.sedih,
+    'putusasa': AppImages.putusasa,
+  };
+
+  void updateImage(String mood) {
+    setState(() {
+      displayedImage = moodImages[mood] ??
+          AppImages.sedih; // Gambar default 'normal' jika mood tidak ditemukan
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,8 +137,14 @@ class AddMood extends StatelessWidget {
                                 Column(
                                   children: [
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .spaceEvenly, // Agar kolom merata
                                       children: [
                                         Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text(
                                               "Semangat",
@@ -128,9 +161,8 @@ class AddMood extends StatelessWidget {
                                                   top: 5.0),
                                               child: InkWell(
                                                 onTap: () {
-                                                  // Aksi saat diklik, misalnya print
-                                                  // ignore: avoid_print
-                                                  print("Semangat dipilih");
+                                                  updateImage(AppImages
+                                                      .semangat); // Ganti gambar ke semangat.png
                                                 },
                                                 child: Container(
                                                   width: 33,
@@ -148,6 +180,10 @@ class AddMood extends StatelessWidget {
                                           ],
                                         ),
                                         Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text(
                                               "Bahagia",
@@ -164,9 +200,8 @@ class AddMood extends StatelessWidget {
                                                   top: 5.0),
                                               child: InkWell(
                                                 onTap: () {
-                                                  // Aksi saat diklik
-                                                  // ignore: avoid_print
-                                                  print("Bahagia dipilih");
+                                                  updateImage(AppImages
+                                                      .bahagia); // Ganti gambar ke bahagia.png
                                                 },
                                                 child: Container(
                                                   width: 33,
@@ -184,6 +219,10 @@ class AddMood extends StatelessWidget {
                                           ],
                                         ),
                                         Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text(
                                               "Senang",
@@ -200,9 +239,8 @@ class AddMood extends StatelessWidget {
                                                   top: 5.0),
                                               child: InkWell(
                                                 onTap: () {
-                                                  // Aksi saat diklik
-                                                  // ignore: avoid_print
-                                                  print("Senang dipilih");
+                                                  updateImage(AppImages
+                                                      .senang); // Ganti gambar ke senang.png
                                                 },
                                                 child: Container(
                                                   width: 33,
@@ -220,6 +258,10 @@ class AddMood extends StatelessWidget {
                                           ],
                                         ),
                                         Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text(
                                               "Normal",
@@ -236,9 +278,8 @@ class AddMood extends StatelessWidget {
                                                   top: 5.0),
                                               child: InkWell(
                                                 onTap: () {
-                                                  // Aksi saat diklik
-                                                  // ignore: avoid_print
-                                                  print("Normal dipilih");
+                                                  updateImage(AppImages
+                                                      .normal); // Ganti gambar ke normal.png
                                                 },
                                                 child: Container(
                                                   width: 33,
@@ -256,6 +297,10 @@ class AddMood extends StatelessWidget {
                                           ],
                                         ),
                                         Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             const Text(
                                               "Bosan",
@@ -272,9 +317,8 @@ class AddMood extends StatelessWidget {
                                                   top: 5.0),
                                               child: InkWell(
                                                 onTap: () {
-                                                  // Aksi saat diklik
-                                                  // ignore: avoid_print
-                                                  print("Bosan dipilih");
+                                                  updateImage(AppImages
+                                                      .bosan); // Ganti gambar ke bosan.png
                                                 },
                                                 child: Container(
                                                   width: 33,
@@ -293,6 +337,7 @@ class AddMood extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+
                                     const SizedBox(
                                         height: 0), // Jarak antara dua baris
                                     // Baris kedua, 5 persegi kecil
@@ -597,13 +642,8 @@ class AddMood extends StatelessWidget {
                                     const EdgeInsets.only(left: 14, top: 10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Navigasi ke halaman TrackerPage
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              BottomNavbar()),
-                                    );
+                                    // Kembali ke halaman sebelumnya
+                                    Navigator.pop(context);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors
@@ -634,12 +674,8 @@ class AddMood extends StatelessWidget {
                                     const EdgeInsets.only(right: 16, top: 10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Navigasi ke halaman TrackerPage
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => BottomNavbar()),
-                                    );
+                                    // Kembali ke halaman sebelumnya
+                                    Navigator.pop(context);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(
@@ -662,7 +698,7 @@ class AddMood extends StatelessWidget {
                                 ),
                               ),
                             ],
-                          ),
+                          )
                         ],
                       )
                     ],

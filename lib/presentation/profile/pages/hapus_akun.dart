@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class DeleteAccountDialog extends StatelessWidget {
   final Function() onConfirm;
   final Function() onCancel;
-
   const DeleteAccountDialog({
     Key? key,
     required this.onConfirm,
-    required this.onCancel, required Null Function() ,
+    required this.onCancel,
+    // ignore: non_constant_identifier_names
+    required Null Function() Function,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -42,7 +42,8 @@ class DeleteAccountDialog extends StatelessWidget {
                   child: TextButton(
                     onPressed: onCancel,
                     style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFF65B7AB), // Mint green color
+                      backgroundColor:
+                          const Color(0xFF65B7AB), // Mint green color
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -89,10 +90,7 @@ class DeleteAccountDialog extends StatelessWidget {
     );
   }
 }
-
 // Helper function to show the dialog
-
-
 // Example usage:
 // ElevatedButton(
 //   onPressed: () => showDeleteAccountDialog(context),
