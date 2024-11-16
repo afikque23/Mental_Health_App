@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/core/configs/assets/app_images.dart';
 
 class HistoryTracker extends StatelessWidget {
-  const HistoryTracker({super.key});
+  final Color color;
+  final String image;
+  final String selectedDate; // Tambahkan parameter
+
+  const HistoryTracker({
+    super.key,
+    required this.color,
+    required this.image,
+    required this.selectedDate, // Tambahkan parameter
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +30,8 @@ class HistoryTracker extends StatelessWidget {
                     ),
                     child: Container(
                       padding: const EdgeInsets.all(16),
-                      color: const Color(0xFFD74646),
-                      height: 240, // Tinggi header
+                      color: color, // Warna header diambil dari parameter
+                      height: 220, // Tinggi header
                       width: double.infinity, // Lebar penuh
                       child: const SafeArea(
                         child: Column(
@@ -41,12 +49,11 @@ class HistoryTracker extends StatelessWidget {
                     top:
                         30, // Mengatur jarak dari atas agar gambar berada di tengah
                     child: Container(
-                      height: 220, // Tinggi gambar
-                      width: 220, // Lebar gambar
-                      decoration: const BoxDecoration(
+                      height: 200, // Tinggi gambar
+                      width: 200, // Lebar gambar
+                      decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(
-                              AppImages.marah), // Pastikan nama gambar sesuai
+                          image: AssetImage(image), // Gambar dari parameter
                           fit: BoxFit
                               .cover, // Agar gambar menyesuaikan ukuran kontainer
                         ),
@@ -57,27 +64,27 @@ class HistoryTracker extends StatelessWidget {
               ),
 
               // Teks di luar header
-              const Padding(
-                padding: EdgeInsets.only(top: 34, left: 21),
+              Padding(
+                padding: const EdgeInsets.only(top: 35, left: 21),
                 child: Text(
-                  "Rabu, 14 September 2005",
-                  style: TextStyle(
+                  selectedDate, // Gunakan tanggal dari parameter
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Poppins',
-                    color: Colors.black, // Sesuaikan warna teks sesuai desain
+                    color: Colors.black,
                   ),
                 ),
               ),
 
               // Container dengan drop shadow di bawah teks
               Padding(
-                padding: const EdgeInsets.only(top: 12, left: 21, right: 21),
+                padding: const EdgeInsets.only(top: 14, left: 21, right: 21),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1), // Warna bayangan
@@ -98,6 +105,7 @@ class HistoryTracker extends StatelessWidget {
                         fontWeight: FontWeight.w300,
                         color: Colors.black87,
                       ),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                 ),
@@ -105,7 +113,7 @@ class HistoryTracker extends StatelessWidget {
 
               // Menambahkan tulisan "Mungkin ini dapat membantu"
               const Padding(
-                padding: EdgeInsets.only(top: 16, left: 21, right: 21),
+                padding: EdgeInsets.only(top: 18, left: 21, right: 21),
                 child: Text(
                   "Mungkin ini dapat membantu",
                   style: TextStyle(
@@ -119,12 +127,12 @@ class HistoryTracker extends StatelessWidget {
 
               // Menambahkan Container dengan drop shadow di bawah "Mungkin ini dapat membantu"
               Padding(
-                padding: const EdgeInsets.only(top: 12, left: 21, right: 21),
+                padding: const EdgeInsets.only(top: 14, left: 21, right: 21),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1), // Warna bayangan
@@ -145,6 +153,7 @@ class HistoryTracker extends StatelessWidget {
                         fontWeight: FontWeight.w300,
                         color: Colors.black87,
                       ),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                 ),
@@ -156,7 +165,7 @@ class HistoryTracker extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             // Tombol kembali
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 690),
+              padding: const EdgeInsets.only(left: 18, top: 695),
               child: ElevatedButton(
                 onPressed: () {
                   // Kembali ke halaman sebelumnya

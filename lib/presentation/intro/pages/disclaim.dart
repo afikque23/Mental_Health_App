@@ -26,11 +26,12 @@ class DisclaimerScreen extends StatelessWidget {
       child: SingleChildScrollView(
         // Menggunakan SingleChildScrollView
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
             SvgPicture.asset(
               AppVectors.dekorasidisclaim1,
+              // ignore: deprecated_member_use
               color: Colors.white,
               width: 120, // Ukuran dekorasi
             ),
@@ -99,6 +100,7 @@ class DisclaimerScreen extends StatelessWidget {
             const SizedBox(height: 40),
             SvgPicture.asset(
               AppVectors.dekorasidisclaim2,
+              // ignore: deprecated_member_use
               color: Colors.white,
               width: 120, // Ukuran dekorasi
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
+import 'package:mental_health_app/presentation/tracker/pages/respons_ai.dart';
 
 class AddMood extends StatefulWidget {
   const AddMood({super.key});
@@ -674,8 +675,14 @@ class _AddMoodState extends State<AddMood> {
                                     const EdgeInsets.only(right: 16, top: 10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Kembali ke halaman sebelumnya
-                                    Navigator.pop(context);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const ResponsAI(
+                                            aiResponse:
+                                                'Your AI response here'),
+                                      ),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(

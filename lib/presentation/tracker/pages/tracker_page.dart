@@ -19,23 +19,21 @@ class _TrackerPageState extends State<TrackerPage> {
         children: [
           Column(
             children: [
-              // Container putih yang mengisi area di atas header
               Container(
                 color: Colors.white,
-                height: 270, // Tinggi sama dengan header
-                width: double.infinity, // Lebar penuh
+                height: 270,
+                width: double.infinity,
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-                    // Header
                     ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           bottom: Radius.circular(50)),
                       child: Container(
                         padding: const EdgeInsets.all(16),
                         color: AppColors.primary,
-                        height: 270, // Tinggi header
-                        width: double.infinity, // Lebar penuh
+                        height: 270,
+                        width: double.infinity,
                         child: const SafeArea(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,20 +43,20 @@ class _TrackerPageState extends State<TrackerPage> {
                                 child: Text(
                                   "Hii, Arya Yusufa kami",
                                   style: TextStyle(
-                                    fontSize: 25, // Ukuran teks header
+                                    fontSize: 25,
                                     fontFamily: 'Coiny',
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 0), // Jarak kecil antar teks
+                              SizedBox(height: 0),
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
                                   "ingin mendengar cerita anda hari ini :)",
                                   style: TextStyle(
-                                    fontSize: 25, // Ukuran teks header
+                                    fontSize: 25,
                                     fontFamily: 'Coiny',
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal,
@@ -73,14 +71,12 @@ class _TrackerPageState extends State<TrackerPage> {
                   ],
                 ),
               ),
-
               SizedBox(
-                height: 120, // Mengatur tinggi container (40 + 100 jarak atas)
+                height: 120,
                 child: Column(
                   children: [
-                    const SizedBox(height: 80), // Menambahkan jarak atas
+                    const SizedBox(height: 80),
                     Expanded(
-                      // Memastikan ListView menggunakan sisa ruang yang tersedia
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
@@ -95,9 +91,7 @@ class _TrackerPageState extends State<TrackerPage> {
                           return Padding(
                             padding: const EdgeInsets.only(right: 2, left: 8),
                             child: ElevatedButton(
-                              onPressed: () {
-                                // Aksi untuk tombol
-                              },
+                              onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
@@ -105,8 +99,7 @@ class _TrackerPageState extends State<TrackerPage> {
                                   side: const BorderSide(color: Colors.black),
                                 ),
                                 elevation: 0,
-                                minimumSize: const Size(
-                                    105, 38), // Mengatur lebar minimum tombol
+                                minimumSize: const Size(105, 38),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 8),
                               ),
@@ -116,7 +109,7 @@ class _TrackerPageState extends State<TrackerPage> {
                                   color: Colors.black,
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600, // SemiBold
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
@@ -127,14 +120,11 @@ class _TrackerPageState extends State<TrackerPage> {
                   ],
                 ),
               ),
-
-              // Konten tambahan bisa ditempatkan di sini
-              const SizedBox(height: 25), // Menambahkan jarak atas
+              const SizedBox(height: 25),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: List.generate(3652, (index) {
-                      // Daftar warna yang akan digunakan
                       final List<Color> colors = [
                         const Color(0xFF46D7B0),
                         const Color(0xFF46D766),
@@ -148,15 +138,12 @@ class _TrackerPageState extends State<TrackerPage> {
                         const Color(0xFF485DD7),
                       ];
 
-                      // Pilih warna berdasarkan indeks, menggunakan modulus untuk mengulang daftar warna
                       final Color colorForThisItem =
                           colors[index % colors.length];
 
-                      // Hitung tanggal mulai dari hari ini, lalu mundur ke belakang berdasarkan index
                       DateTime date =
                           DateTime.now().subtract(Duration(days: index));
 
-                      // Format tanggal menjadi string "Hari, Tanggal Bulan Tahun"
                       String formattedDate = "${[
                         'Senin',
                         'Selasa',
@@ -183,25 +170,42 @@ class _TrackerPageState extends State<TrackerPage> {
                       ][date.month - 1]} "
                           "${date.year}";
 
+                      final List<String> images = [
+                        AppImages.semangat,
+                        AppImages.bahagia,
+                        AppImages.senang,
+                        AppImages.normal,
+                        AppImages.bosan,
+                        AppImages.stress,
+                        AppImages.cemas,
+                        AppImages.marah,
+                        AppImages.sedih,
+                        AppImages.putusasa,
+                      ];
+                      final imageForThisItem = images[index % images.length];
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 11.0, horizontal: 22.0),
                         child: GestureDetector(
                           onTap: () {
-                            // Navigasi ke halaman HistoryTracker ketika diklik
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const HistoryTracker(), // Halaman HistoryTracker
+                                builder: (context) => HistoryTracker(
+                                  color: colorForThisItem,
+                                  image: imageForThisItem,
+                                  selectedDate:
+                                      formattedDate, // Tambahkan parameter
+                                ),
                               ),
                             );
                           },
                           child: Container(
-                            height: 54, // Atur sesuai ukuran gambar
+                            height: 54,
                             decoration: BoxDecoration(
                               color:
-                                  colorForThisItem, // Warna dipilih berdasarkan indeks
+                                  colorForThisItem, // Perbaikan jika properti 'color' salah
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 BoxShadow(
@@ -213,18 +217,16 @@ class _TrackerPageState extends State<TrackerPage> {
                               ],
                             ),
                             child: Align(
-                              alignment:
-                                  Alignment.centerLeft, // Mengatur teks di kiri
+                              alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 16.0), // Tambahkan padding kiri
+                                padding: const EdgeInsets.only(left: 16.0),
                                 child: Text(
                                   formattedDate,
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFFFFFFFF), // Hijau tua
+                                    color: Color(0xFFFFFFFF),
                                   ),
                                 ),
                               ),
@@ -238,32 +240,29 @@ class _TrackerPageState extends State<TrackerPage> {
               ),
             ],
           ),
-          // Gambar di luar header hijau, dengan posisi yang bisa diatur
           Positioned(
-            left: 115, // Atur posisi gambar dari kiri
-            top: 160, // Atur posisi gambar dari atas
+            left: 115,
+            top: 160,
             child: Container(
-              height: 180, // Tinggi gambar
-              width: 180, // Lebar gambar
+              height: 180,
+              width: 180,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(AppImages.trackerimage),
-                  fit: BoxFit.cover, // Atur gambar agar sesuai dengan kontainer
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           Positioned(
-            left: 315, // Jarak dari kiri
-            top: 600, // Jarak dari atas untuk menjaga jarak dengan header
+            left: 315,
+            top: 600,
             child: GestureDetector(
               onTap: () {
-                debugPrint("Icon tapped"); // Cek apakah ikon terdeteksi ditekan
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        const AddMood(), // Navigasi ke halaman AddMood
+                    builder: (context) => const AddMood(),
                   ),
                 );
               },
