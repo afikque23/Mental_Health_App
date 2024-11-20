@@ -11,26 +11,11 @@ class AddMood extends StatefulWidget {
 }
 
 class _AddMoodState extends State<AddMood> {
-  String displayedImage =
-      AppImages.sedih; // Gambar default menggunakan AppImages
+  String displayedImage = AppImages.tandatanya; // Gambar default
 
-  final Map<String, String> moodImages = {
-    'semangat': AppImages.semangat,
-    'bahagia': AppImages.bahagia,
-    'senang': AppImages.senang,
-    'normal': AppImages.normal,
-    'bosan': AppImages.bosan,
-    'cemas': AppImages.cemas,
-    'stress': AppImages.stress,
-    'marah': AppImages.marah,
-    'sedih': AppImages.sedih,
-    'putusasa': AppImages.putusasa,
-  };
-
-  void updateImage(String mood) {
+  void updateImage(String newImage) {
     setState(() {
-      displayedImage = moodImages[mood] ??
-          AppImages.sedih; // Gambar default 'normal' jika mood tidak ditemukan
+      displayedImage = newImage;
     });
   }
 
@@ -112,463 +97,119 @@ class _AddMoodState extends State<AddMood> {
                         padding: const EdgeInsets.only(
                             top: 13.0, left: 18.0, right: 19.0),
                         child: Container(
-                          width: 360, // Lebar 360
-                          height: 130, // Tinggi sesuai keinginan
+                          width: 360,
+                          height: 130,
                           decoration: BoxDecoration(
-                            color: Colors.white, // Warna latar belakang putih
-                            borderRadius:
-                                BorderRadius.circular(20), // Radius membulat
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey
-                                    .withOpacity(0.5), // Bayangan abu-abu
+                                color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 3,
                                 offset: const Offset(0, 1),
                               ),
                             ],
                           ),
-                          // Menambahkan persegi-persegi secara manual
-                          child: Padding(
-                            padding: const EdgeInsets.all(
-                                12.0), // Padding untuk container utama
-                            child: Row(
-                              children: [
-                                // Baris pertama, 5 persegi kecil
-                                Column(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              // Kotak kecil dengan margin khusus
+                              Container(
+                                margin: const EdgeInsets.only(
+                                    left: 16, top: 23, right: 17),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
+                                    // Baris atas
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .spaceEvenly, // Agar kolom merata
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const Text(
-                                              "Semangat",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
+                                      children: List.generate(5, (index) {
+                                        final colors = [
+                                          const Color(0xFF46D7B0),
+                                          const Color(0xFF46D766),
+                                          const Color(0xFF49D746),
+                                          const Color(0xFF86D746),
+                                          const Color(0xFFD7D146),
+                                        ];
+                                        final images = [
+                                          AppImages.semangat,
+                                          AppImages.bahagia,
+                                          AppImages.senang,
+                                          AppImages.normal,
+                                          AppImages.bosan,
+                                        ];
+                                        return GestureDetector(
+                                          onTap: () {
+                                            updateImage(images[index]);
+                                          },
+                                          child: Container(
+                                            margin: const EdgeInsets.all(4.0),
+                                            width: 33,
+                                            height: 33,
+                                            decoration: BoxDecoration(
+                                              color: colors[index],
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 5.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  updateImage(AppImages
-                                                      .semangat); // Ganti gambar ke semangat.png
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF46D7B0),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const Text(
-                                              "Bahagia",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 5.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  updateImage(AppImages
-                                                      .bahagia); // Ganti gambar ke bahagia.png
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF46D766),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const Text(
-                                              "Senang",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 5.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  updateImage(AppImages
-                                                      .senang); // Ganti gambar ke senang.png
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF49D746),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const Text(
-                                              "Normal",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 5.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  updateImage(AppImages
-                                                      .normal); // Ganti gambar ke normal.png
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF86D746),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            const Text(
-                                              "Bosan",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 5.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  updateImage(AppImages
-                                                      .bosan); // Ganti gambar ke bosan.png
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFFD7D146),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                          ),
+                                        );
+                                      }),
                                     ),
-
-                                    const SizedBox(
-                                        height: 0), // Jarak antara dua baris
-                                    // Baris kedua, 5 persegi kecil
+                                    const SizedBox(height: 5),
+                                    // Baris bawah
                                     Row(
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 8.0,
-                                                  bottom: 2.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  // ignore: avoid_print
-                                                  print("Cemas dipilih");
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFFD7AE46),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
+                                      children: List.generate(5, (index) {
+                                        final colors = [
+                                          const Color(0xFFD7AE46),
+                                          const Color(0xFFD78C46),
+                                          const Color(0xFFD74646),
+                                          const Color(0xFF6647D7),
+                                          const Color(0xFF485DD7),
+                                        ];
+                                        final images = [
+                                          AppImages.cemas,
+                                          AppImages.stress,
+                                          AppImages.marah,
+                                          AppImages.sedih,
+                                          AppImages.putusasa,
+                                        ];
+                                        return GestureDetector(
+                                          onTap: () {
+                                            updateImage(images[index]);
+                                          },
+                                          child: Container(
+                                            margin: const EdgeInsets.all(4.0),
+                                            width: 33,
+                                            height: 33,
+                                            decoration: BoxDecoration(
+                                              color: colors[index],
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
                                             ),
-                                            const SizedBox(height: 4),
-                                            const Text(
-                                              "Cemas",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 8.0,
-                                                  bottom: 2.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  // ignore: avoid_print
-                                                  print("Stress dipilih");
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFFD78C46),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            const Text(
-                                              "Stress",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 8.0,
-                                                  bottom: 2.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  // ignore: avoid_print
-                                                  print("Marah dipilih");
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFFD74646),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            const Text(
-                                              "Marah",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 8.0,
-                                                  bottom: 2.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  // ignore: avoid_print
-                                                  print("Sedih dipilih");
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF6647D7),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            const Text(
-                                              "Sedih",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 6.0,
-                                                  right: 4.0,
-                                                  top: 8.0,
-                                                  bottom: 2.0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  // ignore: avoid_print
-                                                  print("Putus asa dipilih");
-                                                },
-                                                child: Container(
-                                                  width: 33,
-                                                  height: 33,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF485DD7),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            const Text(
-                                              "Putus asa",
-                                              style: TextStyle(
-                                                fontSize: 7,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                          ),
+                                        );
+                                      }),
                                     ),
                                   ],
                                 ),
-
-                                const SizedBox(
-                                    width:
-                                        10), // Jarak antara persegi kecil dan besar
-                                // Persegi besar
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 6.0, left: 6.0),
-                                  child: Container(
-                                    width: 90, // 4 kali persegi kecil (30 * 2)
-                                    height: 90, // 4 kali persegi kecil (30 * 2)
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFFD9D9D9),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 4,
-                                          right: 4,
-                                          top: 0,
-                                          bottom:
-                                              10), // Padding untuk gambar, bottom ditambahkan
-                                      child: SizedBox(
-                                        height: 80, // Tinggi ikon
-                                        width: 80, // Lebar ikon
-                                        child: Image.asset(AppImages
-                                            .tandatanya), // Gambar ditambahkan di sini
-                                      ),
-                                    ),
+                              ),
+                              // Kotak besar
+                              Container(
+                                width: 90,
+                                height: 90,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  image: DecorationImage(
+                                    image: AssetImage(displayedImage),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
+
                       const Padding(
                         padding: EdgeInsets.only(top: 20.0, right: 45.0),
                         child: Text(

@@ -125,25 +125,59 @@ class _TrackerPageState extends State<TrackerPage> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: List.generate(3652, (index) {
-                      final List<Color> colors = [
-                        const Color(0xFF46D7B0),
-                        const Color(0xFF46D766),
-                        const Color(0xFF49D746),
-                        const Color(0xFF86D746),
-                        const Color(0xFFD7D146),
-                        const Color(0xFFD7AE46),
-                        const Color(0xFFD78C46),
-                        const Color(0xFFD74646),
-                        const Color(0xFF6647D7),
-                        const Color(0xFF485DD7),
-                      ];
+                      // List pasangan warna dan gambar
+                      final List<Map<String, dynamic>> colorImagePairs = [
+                        {
+                          "color": const Color(0xFF46D7B0),
+                          "image": AppImages.semangat
+                        },
+                        {
+                          "color": const Color(0xFF46D766),
+                          "image": AppImages.bahagia
+                        },
+                        {
+                          "color": const Color(0xFF49D746),
+                          "image": AppImages.senang
+                        },
+                        {
+                          "color": const Color(0xFF86D746),
+                          "image": AppImages.normal
+                        },
+                        {
+                          "color": const Color(0xFFD7D146),
+                          "image": AppImages.bosan
+                        },
+                        {
+                          "color": const Color(0xFFD7AE46),
+                          "image": AppImages.stress
+                        },
+                        {
+                          "color": const Color(0xFFD78C46),
+                          "image": AppImages.cemas
+                        },
+                        {
+                          "color": const Color(0xFFD74646),
+                          "image": AppImages.marah
+                        },
+                        {
+                          "color": const Color(0xFF6647D7),
+                          "image": AppImages.sedih
+                        },
+                        {
+                          "color": const Color(0xFF485DD7),
+                          "image": AppImages.putusasa
+                        },
+                      ]..shuffle(); // Acak pasangan warna dan gambar
 
-                      final Color colorForThisItem =
-                          colors[index % colors.length];
+                      // Pilih pasangan warna dan gambar untuk item saat ini
+                      final Map<String, dynamic> pairForThisItem =
+                          colorImagePairs[index % colorImagePairs.length];
+                      final Color colorForThisItem = pairForThisItem["color"];
+                      final String imageForThisItem = pairForThisItem["image"];
 
+                      // Format tanggal
                       DateTime date =
                           DateTime.now().subtract(Duration(days: index));
-
                       String formattedDate = "${[
                         'Senin',
                         'Selasa',
@@ -170,20 +204,6 @@ class _TrackerPageState extends State<TrackerPage> {
                       ][date.month - 1]} "
                           "${date.year}";
 
-                      final List<String> images = [
-                        AppImages.semangat,
-                        AppImages.bahagia,
-                        AppImages.senang,
-                        AppImages.normal,
-                        AppImages.bosan,
-                        AppImages.stress,
-                        AppImages.cemas,
-                        AppImages.marah,
-                        AppImages.sedih,
-                        AppImages.putusasa,
-                      ];
-                      final imageForThisItem = images[index % images.length];
-
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 11.0, horizontal: 22.0),
@@ -195,8 +215,7 @@ class _TrackerPageState extends State<TrackerPage> {
                                 builder: (context) => HistoryTracker(
                                   color: colorForThisItem,
                                   image: imageForThisItem,
-                                  selectedDate:
-                                      formattedDate, // Tambahkan parameter
+                                  selectedDate: formattedDate,
                                 ),
                               ),
                             );
@@ -204,8 +223,7 @@ class _TrackerPageState extends State<TrackerPage> {
                           child: Container(
                             height: 54,
                             decoration: BoxDecoration(
-                              color:
-                                  colorForThisItem, // Perbaikan jika properti 'color' salah
+                              color: colorForThisItem,
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 BoxShadow(
@@ -237,7 +255,7 @@ class _TrackerPageState extends State<TrackerPage> {
                     }),
                   ),
                 ),
-              ),
+              )
             ],
           ),
           Positioned(

@@ -14,7 +14,7 @@ class AppImages {
   static const String imagetracker = '${basePath}imagetracker.png';
   static const String disclaimer = '${basePath}disclaimer.png';
   static const String editprofile = '${basePath}EditProfile.png';
-  static const String tandatanya = '${basePath}tanda_tanya.png';
+  static const String tandatanya = '${basePath}tandatanya.png';
   static const String marah = '${basePath}marah.png';
   static const String sedih = '${basePath}sedih.png';
   static const String bosan = '${basePath}bosan.png';
