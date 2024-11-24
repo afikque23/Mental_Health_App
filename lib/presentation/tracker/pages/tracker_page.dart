@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
+import 'package:mental_health_app/presentation/intro/pages/screening.dart';
 import 'package:mental_health_app/presentation/tracker/pages/add_mood.dart';
 import 'package:mental_health_app/presentation/tracker/pages/history_tracker.dart';
 
@@ -12,6 +14,8 @@ class TrackerPage extends StatefulWidget {
 }
 
 class _TrackerPageState extends State<TrackerPage> {
+  bool isMoodTrackerSelected = true; // Deklarasi variabel state di sini
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,30 +23,30 @@ class _TrackerPageState extends State<TrackerPage> {
         children: [
           Column(
             children: [
-              Container(
-                color: Colors.white,
-                height: 270,
-                width: double.infinity,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    ClipRRect(
+              Column(
+                children: [
+                  // Container Utama
+                  Container(
+                    color: Colors.white,
+                    height: 220,
+                    width: double.infinity,
+                    child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           bottom: Radius.circular(50)),
                       child: Container(
                         padding: const EdgeInsets.all(16),
                         color: AppColors.primary,
-                        height: 270,
-                        width: double.infinity,
-                        child: const SafeArea(
+                        child: SafeArea(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  "Hii, Arya Yusufa kami",
-                                  style: TextStyle(
+                                  isMoodTrackerSelected
+                                      ? "Hii, Arya Yusufa kami ingin"
+                                      : "Hii, Apa kabar Arya",
+                                  style: const TextStyle(
                                     fontSize: 25,
                                     fontFamily: 'Coiny',
                                     color: Colors.white,
@@ -50,12 +54,14 @@ class _TrackerPageState extends State<TrackerPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 0),
+                              const SizedBox(height: 0),
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  "ingin mendengar cerita anda hari ini :)",
-                                  style: TextStyle(
+                                  isMoodTrackerSelected
+                                      ? "mendengar cerita anda hari ini :)"
+                                      : "Yusufa?",
+                                  style: const TextStyle(
                                     fontSize: 25,
                                     fontFamily: 'Coiny',
                                     color: Colors.white,
@@ -68,20 +74,88 @@ class _TrackerPageState extends State<TrackerPage> {
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  // Tulisan Moodtracker dan Screening
+                  Padding(
+                    padding: const EdgeInsets.only(top: 66),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isMoodTrackerSelected = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                "Moodtracker",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w500,
+                                    color: isMoodTrackerSelected
+                                        ? const Color(0xFF68B39F)
+                                        : const Color(0xFF797A7A)),
+                              ),
+                              const SizedBox(height: 4),
+                              Container(
+                                width: 167,
+                                height: 2,
+                                color: isMoodTrackerSelected
+                                    ? const Color(0xFF68B39F)
+                                    : Colors.transparent,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 25), // Jarak antar teks
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isMoodTrackerSelected = false;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                "Screening",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w500,
+                                    color: isMoodTrackerSelected
+                                        ? const Color(0xFF797A7A)
+                                        : const Color(0xFF68B39F)),
+                              ),
+                              const SizedBox(height: 4),
+                              Container(
+                                  width: 167,
+                                  height: 2,
+                                  color: isMoodTrackerSelected
+                                      ? Colors.transparent
+                                      : const Color(0xFF68B39F)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
-                height: 120,
+                height: 58,
                 child: Column(
                   children: [
-                    const SizedBox(height: 80),
+                    const SizedBox(height: 18),
                     Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 4,
+                        itemCount: 5,
                         itemBuilder: (context, index) {
                           final List<String> labels = [
+                            'Semua',
                             'Hari Ini',
                             'Minggu Ini',
                             'Bulan Ini',
@@ -120,7 +194,7 @@ class _TrackerPageState extends State<TrackerPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 18),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -206,31 +280,44 @@ class _TrackerPageState extends State<TrackerPage> {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 11.0, horizontal: 22.0),
+                            vertical: 10.0, horizontal: 22.0),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HistoryTracker(
-                                  color: colorForThisItem,
-                                  image: imageForThisItem,
-                                  selectedDate: formattedDate,
+                            if (isMoodTrackerSelected) {
+                              // Navigasi ke HistoryTracker pada halaman MoodTracker
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HistoryTracker(
+                                    color: colorForThisItem,
+                                    image: imageForThisItem,
+                                    selectedDate: formattedDate,
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            } else {
+                              // Navigasi ke BottomNavbar pada halaman Screening
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavbar()),
+                              );
+                            }
                           },
                           child: Container(
-                            height: 54,
+                            height: 50,
                             decoration: BoxDecoration(
-                              color: colorForThisItem,
+                              color: isMoodTrackerSelected
+                                  ? colorForThisItem
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
+                                  color: Colors.grey.withOpacity(0.3),
                                   spreadRadius: 0,
-                                  blurRadius: 3,
-                                  offset: const Offset(0, 3),
+                                  blurRadius:
+                                      5, // Tingkat blur untuk efek timbul
+                                  offset: const Offset(0, 3), // Arah bayangan
                                 ),
                               ],
                             ),
@@ -240,11 +327,13 @@ class _TrackerPageState extends State<TrackerPage> {
                                 padding: const EdgeInsets.only(left: 16.0),
                                 child: Text(
                                   formattedDate,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFFFFFFFF),
+                                    color: isMoodTrackerSelected
+                                        ? const Color(0xFFFFFFFF)
+                                        : Colors.black,
                                   ),
                                 ),
                               ),
@@ -260,10 +349,10 @@ class _TrackerPageState extends State<TrackerPage> {
           ),
           Positioned(
             left: 115,
-            top: 160,
+            top: 135,
             child: Container(
-              height: 180,
-              width: 180,
+              height: 150,
+              width: 150,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(AppImages.trackerimage),
@@ -277,12 +366,23 @@ class _TrackerPageState extends State<TrackerPage> {
             top: 600,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddMood(),
-                  ),
-                );
+                if (isMoodTrackerSelected) {
+                  // Jika halaman Moodtracker, arahkan ke AddMood
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddMood(),
+                    ),
+                  );
+                } else {
+                  // Jika halaman Screening, arahkan ke SurveyScreen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SurveyScreen(),
+                    ),
+                  );
+                }
               },
               child: Padding(
                 padding:

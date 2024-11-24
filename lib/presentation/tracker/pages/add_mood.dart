@@ -117,7 +117,7 @@ class _AddMoodState extends State<AddMood> {
                               // Kotak kecil dengan margin khusus
                               Container(
                                 margin: const EdgeInsets.only(
-                                    left: 16, top: 23, right: 17),
+                                    left: 16, top: 12, right: 17),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -131,6 +131,13 @@ class _AddMoodState extends State<AddMood> {
                                           const Color(0xFF86D746),
                                           const Color(0xFFD7D146),
                                         ];
+                                        final labels = [
+                                          "Semangat",
+                                          "Bahagia",
+                                          "Senang",
+                                          "Normal",
+                                          "Bosan"
+                                        ];
                                         final images = [
                                           AppImages.semangat,
                                           AppImages.bahagia,
@@ -138,20 +145,34 @@ class _AddMoodState extends State<AddMood> {
                                           AppImages.normal,
                                           AppImages.bosan,
                                         ];
-                                        return GestureDetector(
-                                          onTap: () {
-                                            updateImage(images[index]);
-                                          },
-                                          child: Container(
-                                            margin: const EdgeInsets.all(4.0),
-                                            width: 33,
-                                            height: 33,
-                                            decoration: BoxDecoration(
-                                              color: colors[index],
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
+                                        return Column(
+                                          children: [
+                                            // Teks di atas kotak
+                                            Text(
+                                              labels[index],
+                                              style: const TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 6,
+                                                color: Color(0xFF4D4D4D),
+                                              ),
                                             ),
-                                          ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                updateImage(images[index]);
+                                              },
+                                              child: Container(
+                                                margin:
+                                                    const EdgeInsets.all(4.0),
+                                                width: 33,
+                                                height: 33,
+                                                decoration: BoxDecoration(
+                                                  color: colors[index],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       }),
                                     ),
@@ -166,6 +187,13 @@ class _AddMoodState extends State<AddMood> {
                                           const Color(0xFF6647D7),
                                           const Color(0xFF485DD7),
                                         ];
+                                        final labels = [
+                                          "Cemas",
+                                          "Stres",
+                                          "Marah",
+                                          "Sedih",
+                                          " Putus Asa"
+                                        ];
                                         final images = [
                                           AppImages.cemas,
                                           AppImages.stress,
@@ -173,20 +201,34 @@ class _AddMoodState extends State<AddMood> {
                                           AppImages.sedih,
                                           AppImages.putusasa,
                                         ];
-                                        return GestureDetector(
-                                          onTap: () {
-                                            updateImage(images[index]);
-                                          },
-                                          child: Container(
-                                            margin: const EdgeInsets.all(4.0),
-                                            width: 33,
-                                            height: 33,
-                                            decoration: BoxDecoration(
-                                              color: colors[index],
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
+                                        return Column(
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                updateImage(images[index]);
+                                              },
+                                              child: Container(
+                                                margin:
+                                                    const EdgeInsets.all(4.0),
+                                                width: 33,
+                                                height: 33,
+                                                decoration: BoxDecoration(
+                                                  color: colors[index],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                            // Teks di bawah kotak
+                                            Text(
+                                              labels[index],
+                                              style: const TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 6,
+                                                color: Color(0xFF4D4D4D),
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       }),
                                     ),
