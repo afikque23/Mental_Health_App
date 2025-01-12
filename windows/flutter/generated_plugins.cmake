@@ -3,7 +3,13 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
   file_selector_windows
+=======
+  awesome_notifications
+  file_selector_windows
+  firebase_core
+>>>>>>> master
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

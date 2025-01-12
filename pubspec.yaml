@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.1
+  sdk: ^3.5.4
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,17 +35,30 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  provider: ^6.0.5
   cupertino_icons: ^1.0.8
-  flutter_svg: ^0.22.0
+  flutter_svg: ^2.0.16
   flutter_bloc:
   hydrated_bloc: ^9.1.5
   path_provider: ^2.1.4
   introduction_screen: ^3.1.14
   shared_preferences: ^2.3.2
-  http: ^1.2.2
   image_picker: ^1.1.2
+  http: ^1.2.2
+  firebase_core: ^2.32.0
+  firebase_messaging: ^14.0.0
+  rxdart: ^0.28.0
+  google_generative_ai: ^0.3.0
+  # flutter_local_notifications: ^9.5.3
+  awesome_notifications: ^0.10.0
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.2
   flutter_test:
     sdk: flutter
 
@@ -58,6 +71,13 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_foreground: "assets/images/icon.png"
+  adaptive_icon_background: "#ffffff"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -71,6 +91,7 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/vectors/
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -140,7 +161,21 @@ flutter:
         - asset: assets/fonts/Inter-UI-BlackItalic.ttf
           style: italic
           weight: 900
-
+    - family: EspressoDolce
+      fonts:
+        - asset: assets/fonts/EspressoDolce.ttf
+    - family: Aqua
+      fonts:
+        - asset: assets/fonts/aqua.ttf
+    - family: RobotoSlab
+      fonts:
+        - asset: assets/fonts/RobotoSlab-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoSlab-Regular.ttf
+        - asset: assets/fonts/RobotoSlab-Light.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoSlab-Thin.ttf
+          weight: 100
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Bold.otf

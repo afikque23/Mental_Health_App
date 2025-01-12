@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/lupa_password_page.dart';
+<<<<<<< HEAD
 import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
 import 'package:mental_health_app/presentation/intro/pages/screening.dart';
 import 'package:mental_health_app/services/api_service.dart';
+=======
+import 'package:mental_health_app/presentation/auth/pages/register_page.dart'; // Import HomePage
+import 'package:mental_health_app/presentation/intro/pages/disclaim.dart';
+import 'package:mental_health_app/services/api_service.dart';
+import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:mental_health_app/services/firebase_service.dart';
+>>>>>>> master
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +26,10 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _apiService = ApiService();
+<<<<<<< HEAD
+=======
+  final fcm = "${FirebaseMessaging.instance.getToken()}";
+>>>>>>> master
 
   bool _isLoading = false;
   bool _isPasswordVisible = false;
@@ -54,13 +67,23 @@ class _LoginPageState extends State<LoginPage> {
     setState(() => _isLoading = true);
 
     try {
+<<<<<<< HEAD
       final response = await _apiService.login(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
+=======
+      final firebaseApi = FirebaseApi();
+      final fcmToken = await firebaseApi.getFCMToken();
+      final response = await _apiService.login(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+        fcm_token: fcmToken ?? '',
+>>>>>>> master
       );
 
       if (!mounted) return;
 
+<<<<<<< HEAD
       if (response['message'] != "Login berhasil.") {
         _showSnackBar(response['message'], Colors.red);
       } else {
@@ -72,6 +95,35 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const SurveyScreen()),
+=======
+      // Check if response indicates a successful login
+      bool isLoginSuccessful = response['status'] == 'success' ||
+          response['message'] == 'Login berhasil.';
+      bool hasCompletedScreening = response['has_completed_screening'] ?? false;
+      print(hasCompletedScreening);
+
+      if (isLoginSuccessful) {
+        // Navigate based on screening status
+        if (response['hasCompletedScreening'] == true) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    BottomNavbar()), // Go to HomePage if screening is completed
+          );
+        } else if (response['hasCompletedScreening'] == false) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const DisclaimerPage()), // Go to SurveyScreen if screening is not completed
+          );
+        }
+      } else {
+        _showSnackBar(
+          response['message'] ?? 'Email atau password salah',
+          Colors.red,
+>>>>>>> master
         );
       }
     } catch (e) {

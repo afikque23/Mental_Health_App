@@ -11,6 +11,23 @@ class AppImages {
   static const String articleAppbar = '${basePath}appbar_article.png';
   static const String trackerimage = '${basePath}trackerimage.png';
   static const String plustracker = '${basePath}add.png';
+<<<<<<< HEAD
   static const String tandaTanya = '${basePath}tanda_tanya.png';
   static const String disclaimer = '${basePath}disclaimer.png';
+=======
+  static const String imagetracker = '${basePath}imagetracker.png';
+  static const String disclaimer = '${basePath}disclaimer.png';
+  static const String editprofile = '${basePath}EditProfile.png';
+  static const String tandatanya = '${basePath}tandatanya.png';
+  static const String marah = '${basePath}marah.png';
+  static const String sedih = '${basePath}sedih.png';
+  static const String bosan = '${basePath}bosan.png';
+  static const String normal = '${basePath}normal.png';
+  static const String bahagia = '${basePath}bahagia.png';
+  static const String senang = '${basePath}senang.png';
+  static const String semangat = '${basePath}semangat.png';
+  static const String putusasa = '${basePath}putus_asa.png';
+  static const String stress = '${basePath}stress.png';
+  static const String cemas = '${basePath}cemas.png';
+>>>>>>> master
 }

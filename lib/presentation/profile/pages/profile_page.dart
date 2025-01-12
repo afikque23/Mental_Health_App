@@ -20,14 +20,26 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final ApiService _apiService = ApiService();
   String _userName = '';
+<<<<<<< HEAD
+=======
+  int userId = 0;
+>>>>>>> master
   String _userEmail = '';
   bool _notificationsEnabled = false;
   File? _image;
   final ImagePicker _picker = ImagePicker();
+<<<<<<< HEAD
+=======
+  File? _selectedImage;
+  bool _isLoading = false;
+  String _profileImageUrl = '';
+  String? _profileImage2 = '';
+>>>>>>> master
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     _loadImage();
   }
 
@@ -50,6 +62,9 @@ class _ProfilePageState extends State<ProfilePage> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('profile_image', pickedFile.path);
     }
+=======
+    fetchUserProfile();
+>>>>>>> master
   }
 
   @override
@@ -64,8 +79,18 @@ class _ProfilePageState extends State<ProfilePage> {
 
       if (result['status'] == 'success') {
         setState(() {
+<<<<<<< HEAD
           _userName = result['user']['nama'];
           _userEmail = result['user']['email'];
+=======
+          userId = result['user']['id_user'];
+
+          _userName = result['user']['nama'];
+          _userEmail = result['user']['email'];
+          _profileImage2 = result['user']['profile_image'];
+          _notificationsEnabled =
+              result['user']['notification_status'] == 1 ? true : false;
+>>>>>>> master
         });
       } else {
         _showMessage(result['message'] ?? 'Error loading profile');
@@ -75,11 +100,81 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+<<<<<<< HEAD
+=======
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _selectedImage = File(pickedFile.path);
+      });
+      _uploadProfileImage();
+    }
+  }
+
+  Future<void> _uploadProfileImage() async {
+    if (_selectedImage == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select an image first')),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Token harus berasal dari session user login (diambil dari backend)
+
+    final response = await _apiService.updateProfileImage(_selectedImage!);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (response['status'] == 'success') {
+      setState(() {
+        _profileImageUrl = response['profile_image_url'];
+      });
+      fetchUserProfile();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Profile image updated successfully'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(response['message'] ?? 'Something went wrong')),
+      );
+    }
+  }
+
+  Future<void> _loadImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? imagePath = prefs.getString('profile_image');
+    if (imagePath != null) {
+      setState(() {
+        _image = File(imagePath);
+      });
+    }
+  }
+
+>>>>>>> master
   Future<void> _logout() async {
     try {
       final result = await _apiService.logout();
       if (result['status_code'] == 200) {
+<<<<<<< HEAD
         Navigator.pushReplacementNamed(context, '/login');
+=======
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginPage()),
+        );
+>>>>>>> master
       } else {
         _showMessage(result['message'] ?? 'Failed to logout');
       }
@@ -144,7 +239,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: const Text("Tidak"),
               ),
               TextButton(
+<<<<<<< HEAD
                 onPressed: () => Navigator.of(context).pop(true),
+=======
+                onPressed: () => {Navigator.of(context).pop(true)},
+>>>>>>> master
                 child: const Text("Ya"),
               ),
             ],
@@ -161,6 +260,32 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+<<<<<<< HEAD
+=======
+  Future<void> _updateNotificationStatus(bool newValue) async {
+    bool isUpdated = await _apiService.updateNotificationStatus(newValue);
+    if (isUpdated) {
+      setState(() {
+        _notificationsEnabled = newValue;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Notification settings updated successfully."),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Failed to update notification settings."),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+>>>>>>> master
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +297,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: <Widget>[
               Stack(
                 children: <Widget>[
+<<<<<<< HEAD
                   CircleAvatar(
                     radius: 80,
                     backgroundImage: _image != null ? FileImage(_image!) : null,
@@ -182,6 +308,24 @@ class _ProfilePageState extends State<ProfilePage> {
                   Positioned(
                     bottom: 0,
                     right: -10,
+=======
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _profileImage2 != null && _profileImage2!.isNotEmpty
+                        ? CircleAvatar(
+                            radius: 80,
+                            backgroundImage: NetworkImage(
+                                'http://10.0.2.2/api-app/storage/app/private/public/profile_images/$_profileImage2'),
+                          )
+                        : const CircleAvatar(
+                            radius: 50,
+                            child: Icon(Icons.person, size: 50),
+                          ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: -1,
+>>>>>>> master
                     child: ElevatedButton(
                       onPressed: _pickImage,
                       style: ElevatedButton.styleFrom(
@@ -222,7 +366,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+<<<<<<< HEAD
                           builder: (context) => const EditProfile()),
+=======
+                          builder: (context) => const EditProfilePage()),
+>>>>>>> master
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -294,6 +442,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               const SizedBox(height: 15),
+<<<<<<< HEAD
               _buildButton(
                 icon: Icons.exit_to_app,
                 text: "Keluar",
@@ -304,6 +453,92 @@ class _ProfilePageState extends State<ProfilePage> {
                 icon: Icons.delete,
                 text: "Hapus Akun",
                 onPressed: _confirmDeleteAccount,
+=======
+              // _buildButton(
+              //   icon: Icons.exit_to_app,
+              //   text: "Keluar",
+              //   onPressed: _confirmLogout,
+              // ),
+              SizedBox(
+                width: 340,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _confirmLogout();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.exit_to_app,
+                        color: Colors.black,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        'Keluar',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "inter",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              // _buildButton(
+              //   icon: Icons.delete,
+              //   text: "Hapus Akun",
+              //   onPressed: _confirmDeleteAccount,
+              // ),
+              SizedBox(
+                width: 340,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _confirmDeleteAccount();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      side: const BorderSide(
+                          color: AppColors.lineColor, width: 2),
+                      overlayColor: Colors.black),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.delete,
+                        color: Colors.black,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        'Hapus Akun',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "inter",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+>>>>>>> master
               ),
             ],
           ),
@@ -313,7 +548,11 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildSwitchCard(
+<<<<<<< HEAD
       String title, bool value, ValueChanged<bool> onChanged) {
+=======
+      String title, bool notificationEnabled, ValueChanged<bool> onChanged) {
+>>>>>>> master
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
@@ -350,12 +589,47 @@ class _ProfilePageState extends State<ProfilePage> {
               Transform.scale(
                 scale: 0.7,
                 child: Switch(
+<<<<<<< HEAD
                   value: value,
                   onChanged: onChanged,
+=======
+                  value: notificationEnabled,
+>>>>>>> master
                   activeColor: Colors.white,
                   activeTrackColor: AppColors.primary,
                   inactiveTrackColor: const Color(0xff797C7B),
                   inactiveThumbColor: Colors.white,
+<<<<<<< HEAD
+=======
+                  onChanged: (newValue) async {
+                    // Panggil API untuk memperbarui status
+                    bool isUpdated =
+                        await _apiService.updateNotificationStatus(newValue);
+
+                    if (isUpdated) {
+                      // Jika berhasil, panggil callback untuk memperbarui UI
+                      onChanged(newValue);
+
+                      // Tampilkan pesan sukses
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              "Notification settings updated successfully."),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                    } else {
+                      // Jika gagal, tampilkan pesan error
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content:
+                              Text("Failed to update notification settings."),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    }
+                  },
+>>>>>>> master
                 ),
               ),
             ],
@@ -365,6 +639,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+<<<<<<< HEAD
   Widget _buildButton({
     required IconData icon,
     required String text,
@@ -398,10 +673,46 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+=======
+  // Widget _buildButton({
+  //   required IconData icon,
+  //   required String text,
+  //   required VoidCallback onPressed,
+  // }) {
+  //   return SizedBox(
+  //     width: 340,
+  //     height: 55,
+  //     child: ElevatedButton(
+  //       onPressed: onPressed,
+  //       style: ElevatedButton.styleFrom(
+  //         foregroundColor: Colors.black,
+  //         backgroundColor: Colors.white,
+  //         padding: const EdgeInsets.symmetric(horizontal: 16),
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  //         side: const BorderSide(color: AppColors.lineColor, width: 2),
+  //         overlayColor: Colors.black,
+  //       ),
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.start,
+  //         children: [
+  //           Icon(icon, color: Colors.black),
+  //           const SizedBox(width: 8),
+  //           Text(
+  //             text,
+  //             style: const TextStyle(fontSize: 18, fontFamily: "inter"),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+>>>>>>> master
 }
 
 // STYLE POPUP KELUAR DAN HAPUS AKUN
 // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+<<<<<<< HEAD
 // void _showSimpleDialogKeluar(BuildContext context) {
 //   showDialog(
 //     context: context,
@@ -568,3 +879,174 @@ class _ProfilePageState extends State<ProfilePage> {
 //     },
 //   );
 // }
+=======
+void _showSimpleDialogKeluar(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        children: <Widget>[
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            child: Center(
+              child: Text(
+                "Apa kamu yakin buat keluar? :(",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary, // Warna tombol Batal
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: Text(
+                        "Batal",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontSize: 22),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          const Color(0xffd9d9d9), // Warna tombol Ya
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: Text(
+                        "Ya",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontSize: 22),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _showSimpleDialogHapusAkun(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        children: <Widget>[
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            child: Center(
+              child: Text(
+                "Apa kamu yakin ingin hapus akun? :(",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary, // Warna tombol Batal
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: Text(
+                        "Batal",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontSize: 22),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          const Color(0xffd9d9d9), // Warna tombol Ya
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: Text(
+                        "Ya",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontSize: 22),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+>>>>>>> master
