@@ -11,6 +11,10 @@ class AppImages {
   static const String articleAppbar = '${basePath}appbar_article.png';
   static const String trackerimage = '${basePath}trackerimage.png';
   static const String plustracker = '${basePath}add.png';
+<<<<<<< HEAD
+  static const String tandaTanya = '${basePath}tanda_tanya.png';
+  static const String disclaimer = '${basePath}disclaimer.png';
+=======
   static const String imagetracker = '${basePath}imagetracker.png';
   static const String disclaimer = '${basePath}disclaimer.png';
   static const String editprofile = '${basePath}EditProfile.png';
@@ -25,4 +29,5 @@ class AppImages {
   static const String putusasa = '${basePath}putus_asa.png';
   static const String stress = '${basePath}stress.png';
   static const String cemas = '${basePath}cemas.png';
+>>>>>>> master
 }

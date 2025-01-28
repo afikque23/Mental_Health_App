@@ -1,13 +1,25 @@
+<<<<<<< HEAD
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+=======
 // ignore_for_file: unused_field
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+>>>>>>> master
 import 'package:mental_health_app/common/widgets/appbar/bottom_navbar.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/assets/app_vectors.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
+<<<<<<< HEAD
+
+// Contoh halaman artikel (Anda bisa ganti dengan halaman artikel yang sebenarnya)
+class ArticleList extends StatelessWidget {
+  final String title;
+  const ArticleList({super.key, required this.title});
+=======
 import 'package:mental_health_app/services/article_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mental_health_app/services/api_service.dart';
@@ -44,10 +56,15 @@ class ArticlePageList extends StatelessWidget {
       return "Invalid Date";
     }
   }
+>>>>>>> master
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text('Halaman artikel: $title')),
+=======
       appBar: AppBar(
         title: const Text(
           "NURAGA",
@@ -152,10 +169,51 @@ class ArticlePageList extends StatelessWidget {
           ],
         ),
       ),
+>>>>>>> master
     );
   }
 }
 
+<<<<<<< HEAD
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  // Data artikel dengan informasi navigasi
+  final List<Map<String, dynamic>> articles = const [
+    {
+      "title": "Mengatasi Stress",
+      "content":
+          "Tips dan trik mengatasi stress dalam kehidupan sehari-hari...",
+      "route": "/artikel-stress",
+      "pageBuilder": ArticleList(title: "Mengatasi Stress"),
+    },
+    {
+      "title": "Meditasi untuk Pemula",
+      "content": "Panduan lengkap meditasi untuk pemula yang ingin memulai...",
+      "route": "/artikel-meditasi",
+      "pageBuilder": ArticleList(title: "Meditasi untuk Pemula"),
+    },
+    {
+      "title": "Pola Tidur Sehat",
+      "content":
+          "Bagaimana menciptakan pola tidur yang sehat dan berkualitas...",
+      "route": "/artikel-tidur",
+      "pageBuilder": ArticleList(title: "Pola Tidur Sehat"),
+    },
+    {
+      "title": "Nutrisi untuk Mental",
+      "content": "Makanan yang dapat membantu meningkatkan kesehatan mental...",
+      "route": "/artikel-nutrisi",
+      "pageBuilder": ArticleList(title: "Nutrisi untuk Mental"),
+    },
+    {
+      "title": "Olahraga dan Mental",
+      "content": "Hubungan antara aktivitas fisik dan kesehatan mental...",
+      "route": "/artikel-olahraga",
+      "pageBuilder": ArticleList(title: "Olahraga dan Mental"),
+    },
+  ];
+=======
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -312,11 +370,15 @@ class _HomePageState extends State<HomePage> {
       return "Format tanggal tidak valid";
     }
   }
+>>>>>>> master
 
   void _navigateToArticle(BuildContext context, Map<String, dynamic> article) {
     Navigator.push(
       context,
       MaterialPageRoute(
+<<<<<<< HEAD
+        builder: (context) => article["pageBuilder"],
+=======
         builder: (context) => ArticlePageList(
           tittle: article['tittle'],
           content: article['content'],
@@ -327,10 +389,18 @@ class _HomePageState extends State<HomePage> {
           created_at: article['createdAt'],
           author: article['author'],
         ),
+>>>>>>> master
       ),
     );
   }
 
+<<<<<<< HEAD
+  Widget _buildArticleCard(BuildContext context, Map<String, dynamic> article) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      width: 404,
+      height: 179,
+=======
   Future<void> checkArticleLikeStatus(int articleId) async {
     try {
       final isLiked = await _articleService.checkArticleLiked(articleId);
@@ -391,11 +461,20 @@ class _HomePageState extends State<HomePage> {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       constraints: const BoxConstraints(maxHeight: 230),
+>>>>>>> master
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
+<<<<<<< HEAD
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+=======
           BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, 2)),
+>>>>>>> master
         ],
       ),
       child: GestureDetector(
@@ -404,17 +483,50 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               width: 146,
+<<<<<<< HEAD
+              height: 179,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+=======
               height: 275,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(articleImageUrl),
                   fit: BoxFit.cover,
                 ),
+>>>>>>> master
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),
               ),
+<<<<<<< HEAD
+              child: IconButton(
+                icon: const Icon(Icons.favorite_border),
+                onPressed: () {},
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article["title"] ?? "Judul Artikel",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      article["content"] ?? "Lorem Ipsum...",
+                      style: const TextStyle(fontSize: 14),
+=======
               child: Stack(
                 children: [
                   Positioned(
@@ -491,6 +603,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+>>>>>>> master
                     ),
                   ],
                 ),
@@ -519,6 +632,13 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
+<<<<<<< HEAD
+                        const Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 24,
+=======
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: GestureDetector(
@@ -542,18 +662,36 @@ class _HomePageState extends State<HomePage> {
                                     radius: 30,
                                     child: Icon(Icons.person, size: 30),
                                   ),
+>>>>>>> master
                           ),
                         ),
                         Expanded(
                           child: Container(
                             width: 276,
+<<<<<<< HEAD
+                            height: 34,
+                            margin: const EdgeInsets.symmetric(horizontal: 18),
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
+=======
                             height: 40,
                             margin: const EdgeInsets.symmetric(horizontal: 10),
                             padding: const EdgeInsets.symmetric(horizontal: 10),
+>>>>>>> master
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
                             ),
+<<<<<<< HEAD
+                            child: const Row(
+                              children: [
+                                Icon(Icons.search, color: Colors.black),
+                                SizedBox(width: 8),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+=======
                             child: Row(
                               children: [
                                 IconButton(
@@ -591,6 +729,7 @@ class _HomePageState extends State<HomePage> {
                                         }
                                       },
                                       decoration: const InputDecoration(
+>>>>>>> master
                                         hintText: 'Cari artikel disini...',
                                         hintStyle: TextStyle(
                                             color: AppColors.grey,
@@ -604,6 +743,17 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+<<<<<<< HEAD
+                        Container(
+                          padding: const EdgeInsets.all(0.0),
+                          child: const Icon(
+                            size: 27,
+                            Icons.notifications,
+                            color: Colors.white,
+                          ),
+                        ),
+=======
+>>>>>>> master
                       ],
                     ),
                     const SizedBox(
@@ -616,6 +766,12 @@ class _HomePageState extends State<HomePage> {
                                 horizontal: 12, vertical: 0),
                             width: 210,
                             height: 100,
+<<<<<<< HEAD
+                            child: const Text(
+                              'Hello, Arya Yusufa :)',
+                              style: TextStyle(
+                                  fontFamily: 'Coiny',
+=======
                             child: Text(
                               _userName.isNotEmpty
                                   ? 'Halo, $_userName'
@@ -623,6 +779,7 @@ class _HomePageState extends State<HomePage> {
                               style: const TextStyle(
                                   fontFamily: 'RobotoSlab',
                                   fontWeight: FontWeight.w700,
+>>>>>>> master
                                   fontSize: 30,
                                   color: AppColors.primaryBackground),
                             )),
@@ -643,13 +800,19 @@ class _HomePageState extends State<HomePage> {
           // Main Content
           Expanded(
             child: Container(
+<<<<<<< HEAD
+              color: AppColors.primaryBackground,
+=======
               color: Colors.white,
+>>>>>>> master
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
                     const SizedBox(height: 16),
+<<<<<<< HEAD
+=======
 
                     Container(
                       padding: const EdgeInsets.all(16.0),
@@ -793,6 +956,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(height: 30),
+>>>>>>> master
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: ElevatedButton(
@@ -800,14 +964,22 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
+<<<<<<< HEAD
+                                builder: (context) => BottomNavbar()),
+=======
                                 builder: (context) => const BottomNavbar(
                                       currentIndex: 2,
                                     )),
+>>>>>>> master
                           );
                         },
                         style: ElevatedButton.styleFrom(
                           maximumSize: const Size(350, 60),
+<<<<<<< HEAD
+                          backgroundColor: AppColors.primary,
+=======
                           backgroundColor: Colors.teal,
+>>>>>>> master
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -837,10 +1009,17 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 16,
                     ),
+<<<<<<< HEAD
+                    const Center(
+                      child: Text(
+                        '"Ingatlah, Impian setiap orang tidak akan pernah berakhir, zehahahahaha!"',
+                        style: TextStyle(
+=======
                     Center(
                       child: Text(
                         '"$content"',
                         style: const TextStyle(
+>>>>>>> master
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins',
@@ -849,10 +1028,17 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                       ),
                     ),
+<<<<<<< HEAD
+                    const Center(
+                      child: Text(
+                        '-Marshal D. Teach A.K.A Kurohige-',
+                        style: TextStyle(
+=======
                     Center(
                       child: Text(
                         '- $author -',
                         style: const TextStyle(
+>>>>>>> master
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins',
@@ -865,6 +1051,9 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 120),
                       child: TextButton(
+<<<<<<< HEAD
+                        onPressed: () {},
+=======
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -874,11 +1063,16 @@ class _HomePageState extends State<HomePage> {
                                     )),
                           );
                         },
+>>>>>>> master
                         child: const Text(
                           'Artikel untuk Anda   >',
                           style: TextStyle(
                               fontSize: 18,
+<<<<<<< HEAD
+                              color: AppColors.primary,
+=======
                               color: Colors.teal,
+>>>>>>> master
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600),
                           textAlign: TextAlign.left,
@@ -886,9 +1080,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(height: 16),
+<<<<<<< HEAD
+                    // List artikel menggunakan ListView.builder
+                    // ignore: unnecessary_to_list_in_spreads
+                    ...articles
+=======
 
                     // ignore: unnecessary_to_list_in_spreads
                     ..._articles
+>>>>>>> master
                         .map((article) => _buildArticleCard(context, article)),
                   ],
                 ),

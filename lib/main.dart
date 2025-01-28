@@ -6,6 +6,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mental_health_app/presentation/splash/pages/splash.dart';
+<<<<<<< HEAD
+import 'package:path_provider/path_provider.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
+  );
+=======
 import 'package:mental_health_app/services/api_service.dart';
 import './providers/article_provider.dart';
 import 'package:path_provider/path_provider.dart';
@@ -93,6 +107,7 @@ Future<void> main() async {
     SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
   );
 
+>>>>>>> master
   runApp(const MyApp());
 }
 
@@ -100,6 +115,11 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+<<<<<<< HEAD
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+=======
   State<MyApp> createState() => _MyAppState();
 }
 
@@ -110,16 +130,25 @@ class _MyAppState extends State<MyApp> {
       providers: [
         Provider<ApiService>(create: (_) => ApiService()),
         ChangeNotifierProvider(create: (_) => ArticleProvider()),
+>>>>>>> master
         BlocProvider(create: (_) => ThemeCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, mode) => MaterialApp(
+<<<<<<< HEAD
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: mode,
+            debugShowCheckedModeBanner: false,
+            home: const SplashPage()),
+=======
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: mode,
           debugShowCheckedModeBanner: false,
           home: const SplashPage(),
         ),
+>>>>>>> master
       ),
     );
   }

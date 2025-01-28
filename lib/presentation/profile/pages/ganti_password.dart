@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/services/api_service.dart';
+>>>>>>> master
 
 class GantiPasswordPage extends StatefulWidget {
   final Function(String, String, String) onSubmit;
 
   const GantiPasswordPage({
+<<<<<<< HEAD
+    Key? key,
+    required this.onSubmit,
+  }) : super(key: key);
+=======
     super.key,
     required this.onSubmit,
   });
+>>>>>>> master
 
   @override
   State<GantiPasswordPage> createState() => _ChangePasswordDialogState();
@@ -21,8 +30,11 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
   bool _obscureOldPassword = true;
   bool _obscureNewPassword = true;
   bool _obscureConfirmPassword = true;
+<<<<<<< HEAD
+=======
   bool _isLoading = false;
   final ApiService _apiService = ApiService();
+>>>>>>> master
 
   @override
   void dispose() {
@@ -32,6 +44,8 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
     super.dispose();
   }
 
+<<<<<<< HEAD
+=======
   Future<void> _logout() async {
     try {
       final result = await _apiService.logout();
@@ -91,6 +105,7 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
     }
   }
 
+>>>>>>> master
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -149,9 +164,13 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
+<<<<<<< HEAD
+                    _obscureOldPassword ? Icons.visibility_off : Icons.visibility,
+=======
                     _obscureOldPassword
                         ? Icons.visibility_off
                         : Icons.visibility,
+>>>>>>> master
                   ),
                   onPressed: () {
                     setState(() {
@@ -185,9 +204,13 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
+<<<<<<< HEAD
+                    _obscureNewPassword ? Icons.visibility_off : Icons.visibility,
+=======
                     _obscureNewPassword
                         ? Icons.visibility_off
                         : Icons.visibility,
+>>>>>>> master
                   ),
                   onPressed: () {
                     setState(() {
@@ -221,9 +244,13 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
+<<<<<<< HEAD
+                    _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+=======
                     _obscureConfirmPassword
                         ? Icons.visibility_off
                         : Icons.visibility,
+>>>>>>> master
                   ),
                   onPressed: () {
                     setState(() {
@@ -236,6 +263,32 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
+<<<<<<< HEAD
+              child: TextButton(
+                onPressed: () {
+                  widget.onSubmit(
+                    _oldPasswordController.text,
+                    _newPasswordController.text,
+                    _confirmPasswordController.text,
+                  );
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color(0xFF65B7AB),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'Ganti Password',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+=======
               child: _isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : TextButton(
@@ -256,6 +309,7 @@ class _ChangePasswordDialogState extends State<GantiPasswordPage> {
                         ),
                       ),
                     ),
+>>>>>>> master
             ),
           ],
         ),
@@ -271,8 +325,29 @@ void showChangePasswordDialog(BuildContext context) {
     barrierDismissible: true,
     builder: (BuildContext context) {
       return GantiPasswordPage(
+<<<<<<< HEAD
+        onSubmit: (oldPassword, newPassword, confirmPassword) {
+          // Add password change logic here
+          print('Old Password: $oldPassword');
+          print('New Password: $newPassword');
+          print('Confirm Password: $confirmPassword');
+          
+          // Close dialog after submission
+          Navigator.of(context).pop();
+        },
+=======
         onSubmit: (oldPassword, newPassword, confirmPassword) {},
+>>>>>>> master
       );
     },
   );
 }
+<<<<<<< HEAD
+
+// Example usage:
+// ElevatedButton(
+//   onPressed: () => showChangePasswordDialog(context),
+//   child: const Text('Change Password'),
+// )
+=======
+>>>>>>> master

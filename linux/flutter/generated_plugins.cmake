@@ -3,7 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
+=======
   awesome_notifications
+>>>>>>> master
   file_selector_linux
 )
 

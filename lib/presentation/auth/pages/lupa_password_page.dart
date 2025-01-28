@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/presentation/auth/pages/register_page.dart';
+<<<<<<< HEAD
+
+class LupaPasswordPage extends StatelessWidget {
+  const LupaPasswordPage({super.key});
+
+  @override
+=======
 import 'package:mental_health_app/services/api_service.dart'; // Pastikan sudah diimpor
 import 'package:provider/provider.dart';
 
@@ -58,6 +65,7 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
   }
 
   @override
+>>>>>>> master
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -92,7 +100,10 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextField(
+<<<<<<< HEAD
+=======
                   controller: _emailController,
+>>>>>>> master
                   decoration: InputDecoration(
                     labelText: 'Email',
                     hintText: 'contoh@gmail.com',
@@ -107,11 +118,33 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ElevatedButton(
+<<<<<<< HEAD
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const ScreeningPage()),
+                    // );
+                  },
+=======
                   onPressed: _isLoading ? null : _sendResetLink,
+>>>>>>> master
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
+<<<<<<< HEAD
+                    borderRadius: BorderRadius.circular(35),
+                    ),
+                  ),
+                  child: const Text(
+                    'Kirim',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
+=======
                       borderRadius: BorderRadius.circular(35),
                     ),
                   ),
@@ -127,6 +160,7 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
                               fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
+>>>>>>> master
                 ),
               ),
               const SizedBox(height: 16),
@@ -163,8 +197,12 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
+<<<<<<< HEAD
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
+=======
                       MaterialPageRoute(
                           builder: (context) => const LoginPage()),
+>>>>>>> master
                     );
                   },
                   child: const Text(
@@ -193,7 +231,14 @@ class _LupaPasswordPageState extends State<LupaPasswordPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
+<<<<<<< HEAD
+                          builder: (
+                            context) => const RegisterPage(
+                          )
+                        ),
+=======
                             builder: (context) => const RegisterPage()),
+>>>>>>> master
                       );
                     },
                     child: const Text(

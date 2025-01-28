@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class ApiService {
+  static const String baseUrl = 'http://192.168.18.82:8000/api';
+  String? _token;
+=======
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'dart:convert';
@@ -13,6 +23,7 @@ class ApiService {
   static const String baseUrl = 'http://10.0.2.2:8000/api';
   String? _token;
   String? get token => _token;
+>>>>>>> master
 
   Future<void> setToken(String token) async {
     _token = token;
@@ -31,6 +42,8 @@ class ApiService {
     await prefs.remove('token');
   }
 
+<<<<<<< HEAD
+=======
   Future<http.Response> sendResetLink(String email) async {
     final url = Uri.parse('$baseUrl/forgot-password');
     return await http.post(url, body: {'email': email});
@@ -47,6 +60,7 @@ class ApiService {
     });
   }
 
+>>>>>>> master
   Future<Map<String, dynamic>> register({
     required String nama,
     required String email,
@@ -55,7 +69,10 @@ class ApiService {
     required String hp,
     required DateTime tanggal_lahir,
     required String passwordConfirmation,
+<<<<<<< HEAD
+=======
     required String fcmToken,
+>>>>>>> master
   }) async {
     final dateFormatter = DateFormat('yyyy-MM-dd');
     final formattedDate = dateFormatter.format(tanggal_lahir);
@@ -72,15 +89,48 @@ class ApiService {
           'tanggal_lahir': formattedDate,
           'password': password,
           'password_confirmation': passwordConfirmation,
+<<<<<<< HEAD
+        }),
+      );
+
+=======
           'fcm_token': fcmToken,
         }),
       );
+>>>>>>> master
       return _handleResponse(response);
     } catch (e) {
       return {'message': 'Failed to connect to the server: $e'};
     }
   }
 
+<<<<<<< HEAD
+  Future<Map<String, dynamic>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': email,
+          'password': password,
+        }),
+      );
+
+      final result = _handleResponse(response);
+      if (result.containsKey('token')) {
+        await setToken(
+            result['token']); // Save the token if login is successful
+      }
+      return result;
+    } catch (e) {
+      return {'message': 'Failed to connect to the server: $e'};
+    }
+  }
+
+=======
   Future<Map<String, dynamic>> login(
       {required String email,
       required String password,
@@ -150,6 +200,7 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
+>>>>>>> master
   Future<Map<String, dynamic>> getProfile() async {
     await loadToken();
     if (_token == null) {
@@ -165,14 +216,22 @@ class ApiService {
         },
       );
 
+<<<<<<< HEAD
+      final result = _handleResponse(response);
+      return result;
+=======
       return _handleResponse(response);
+>>>>>>> master
     } catch (e) {
       return {'message': 'Failed to connect to the server: $e'};
     }
   }
 
   Future<Map<String, dynamic>> logout() async {
+<<<<<<< HEAD
+=======
     await loadToken();
+>>>>>>> master
     if (_token == null) {
       return {'message': 'User is not logged in.'};
     }
@@ -230,6 +289,15 @@ class ApiService {
     }
   }
 
+<<<<<<< HEAD
+  Map<String, dynamic> _handleResponse(http.Response response) {
+    final responseBody = jsonDecode(response.body);
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return responseBody; // Successful response
+    } else {
+      return {
+        'message': responseBody['message'] ?? 'Unknown error occurred',
+=======
   // Screening Feature
 
   Future<List<ScreeningQuestion>> getScreeningQuestions() async {
@@ -499,10 +567,14 @@ class ApiService {
       return {
         'message': responseBody['message'] ?? 'Unknown error occurred',
         'error': responseBody['error'] ?? 'Unknown error',
+>>>>>>> master
         'status_code': response.statusCode
       };
     }
   }
+<<<<<<< HEAD
+=======
 
   fetchRandomQuote() {}
+>>>>>>> master
 }

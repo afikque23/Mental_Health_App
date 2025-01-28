@@ -1,7 +1,10 @@
 class AppVectors {
   static const String basePath = 'assets/vectors/';
   static const String format = '.svg';
+<<<<<<< HEAD
+=======
   static const String logo = '${basePath}logo_nuraga$format';
+>>>>>>> master
   static const String sun = '${basePath}sun$format';
   static const String moon = '${basePath}moon$format';
   static const String topPattern = '${basePath}top_pattern$format';
@@ -11,7 +14,10 @@ class AppVectors {
   static const String article = '${basePath}article$format';
   static const String tracker = '${basePath}tracker$format';
   static const String profile = '${basePath}profile$format';
+<<<<<<< HEAD
+=======
   static const String profile2 = '${basePath}profile_avatar$format';
+>>>>>>> master
   static const String howAreYou = '${basePath}how_are_you_today$format';
   static const String dekorasidisclaim1 =
       '${basePath}dekorasi_disclaimer_1$format';
@@ -28,8 +34,16 @@ class AppVectors {
   static const String stress = '${basePath}stress_tracker$format';
   static const String marah = '${basePath}marah_tracker$format';
   static const String sedih = '${basePath}sedih_tracker$format';
+<<<<<<< HEAD
+  static const String putusasa = '${basePath}putus_asa_tracker$format';
+  static const String plustracker = '${basePath}pluples_tracker$format';
+  static const String avatarProfile = '${basePath}profile_avatar$format';
+  static const String logo = '${basePath}logo_nuraga$format';
+  static const String editProfile = '${basePath}edit_profile$format';
+=======
   static const String editProfile = '${basePath}edit_profile$format';
   static const String putusasa = '${basePath}putus_asa_tracker$format';
   static const String plustracker = '${basePath}pluples_tracker$format';
   static const String avatarProfile = '${basePath}profile_avatar$format';
+>>>>>>> master
 }
