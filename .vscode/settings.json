@@ -1,0 +1,7 @@
+{
+  "files.readonlyInclude": {
+    "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
+  },
+  "cmake.sourceDirectory": "E:/flutter/Mental_Health_App/linux",
+  "java.configuration.updateBuildConfiguration": "interactive"
+}

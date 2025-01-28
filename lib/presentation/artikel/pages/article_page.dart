@@ -362,7 +362,7 @@ class _ArticlePageState extends State<ArticlePage> {
 
     final String articleImageUrl = article['image'] != null &&
             article['image'].isNotEmpty
-        ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+        ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
         : 'https://via.placeholder.com/150';
 
     return Container(
@@ -383,7 +383,7 @@ class _ArticlePageState extends State<ArticlePage> {
               tittle: article['tittle'] ?? "No Title",
               content: article['content'] ?? "No Content",
               imageUrl: article['image'] != null && article['image'].isNotEmpty
-                  ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+                  ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
                   : 'https://via.placeholder.com/150',
               category: article['category'] ?? "No Category",
               created_at: article['createdAt'] ?? "No Date",
@@ -527,7 +527,7 @@ class _ArticlePageState extends State<ArticlePage> {
                                 ? CircleAvatar(
                                     radius: 25,
                                     backgroundImage: NetworkImage(
-                                        'http://10.0.2.2/api-app/storage/app/private/public/profile_images/$_profileImage'),
+                                        'https://mentalhealth.cyou/storage/app/private/public/profile_images/$_profileImage'),
                                   )
                                 : const CircleAvatar(
                                     radius: 30,

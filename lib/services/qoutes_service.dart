@@ -5,7 +5,7 @@ import 'package:mental_health_app/services/api_service.dart';
 
 class QoutesService {
   final String _baseUrl =
-      'http://10.0.2.2:8000/api'; // Ganti dengan URL API Anda
+      'https://mentalhealth.cyou/api'; // Ganti dengan URL API Anda
   final ApiService _apiService = ApiService();
 
   Future<Map<String, dynamic>> fetchRandomQuote() async {

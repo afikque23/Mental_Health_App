@@ -253,7 +253,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ? CircleAvatar(
                             radius: 80,
                             backgroundImage: NetworkImage(
-                                'http://10.0.2.2/api-app/storage/app/private/public/profile_images/$_profileImage2'),
+                                'https://mentalhealth.cyou/storage/app/private/public/profile_images/$_profileImage2'),
                           )
                         : const CircleAvatar(
                             radius: 50,

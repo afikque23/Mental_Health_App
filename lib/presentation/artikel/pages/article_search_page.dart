@@ -174,7 +174,7 @@ class _ArticleSearchPageState extends State<ArticleSearchPage> {
               final article = articles[index];
               final String articleImageUrl = article.imageUrl != null &&
                       article.imageUrl.isNotEmpty
-                  ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article.imageUrl}"
+                  ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article.imageUrl}"
                   : 'https://via.placeholder.com/150';
               final articleProvider = Provider.of<ArticleProvider>(context);
               final isLiked =

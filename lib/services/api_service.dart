@@ -10,7 +10,7 @@ import 'package:mental_health_app/data/models/ScreeningQuestion.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.0.2.2:8000/api';
+  static const String baseUrl = 'https://mentalhealth.cyou/api';
   String? _token;
   String? get token => _token;
 

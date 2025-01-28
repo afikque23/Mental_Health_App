@@ -321,7 +321,7 @@ class _HomePageState extends State<HomePage> {
           tittle: article['tittle'],
           content: article['content'],
           imageUrl: article['image'] != null && article['image'].isNotEmpty
-              ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+              ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
               : 'https://via.placeholder.com/150',
           category: article['category'],
           created_at: article['createdAt'],
@@ -385,7 +385,7 @@ class _HomePageState extends State<HomePage> {
         articleProvider.likedArticles[article['id_article']] ?? false;
     final String articleImageUrl = article['image'] != null &&
             article['image'].isNotEmpty
-        ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+        ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
         : 'https://via.placeholder.com/150';
 
     return Container(

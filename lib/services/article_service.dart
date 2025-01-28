@@ -4,7 +4,7 @@ import 'package:mental_health_app/data/models/Article.dart';
 import 'package:mental_health_app/services/api_service.dart';
 
 class ArticleService {
-  static const String _baseUrl = 'http://10.0.2.2:8000/api';
+  static const String _baseUrl = 'https://mentalhealth.cyou/api';
   final ApiService _apiService = ApiService();
 
   // Fetch all articles with like status
