@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-<<<<<<< HEAD
-
-class TrackerPage extends StatelessWidget {
-  const TrackerPage({super.key});
-
-  @override
-=======
 import 'package:mental_health_app/presentation/intro/pages/screening.dart';
 import 'package:mental_health_app/presentation/tracker/pages/add_mood.dart';
 import 'package:mental_health_app/presentation/tracker/pages/history_tracker.dart';
@@ -427,24 +420,12 @@ class _TrackerPageState extends State<TrackerPage> {
   }
 
   @override
->>>>>>> master
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Column(
             children: [
-<<<<<<< HEAD
-              // Container putih yang mengisi area di atas header
-              Container(
-                color: Colors.white,
-                height: 270, // Tinggi sama dengan header
-                width: double.infinity, // Lebar penuh
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    // Header
-=======
               Container(
                 color: Colors.white,
                 height: 270,
@@ -452,47 +433,21 @@ class _TrackerPageState extends State<TrackerPage> {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
->>>>>>> master
                     ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           bottom: Radius.circular(50)),
                       child: Container(
                         padding: const EdgeInsets.all(16),
                         color: AppColors.primary,
-<<<<<<< HEAD
-                        height: 270, // Tinggi header
-                        width: double.infinity, // Lebar penuh
-                        child: const SafeArea(
-=======
                         height: 270,
                         width: double.infinity,
                         child: SafeArea(
->>>>>>> master
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-<<<<<<< HEAD
-                                  "Hii, Arya Yusufa kami",
-                                  style: TextStyle(
-                                    fontSize: 25, // Ukuran teks header
-                                    fontFamily: 'Coiny',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 0), // Jarak kecil antar teks
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "ingin mendengar cerita anda hari ini :)",
-                                  style: TextStyle(
-                                    fontSize: 25, // Ukuran teks header
-                                    fontFamily: 'Coiny',
-=======
                                   _username.isNotEmpty
                                       ? 'Halo, $_username'
                                       : 'Memuat...',
@@ -512,7 +467,6 @@ class _TrackerPageState extends State<TrackerPage> {
                                   style: TextStyle(
                                     fontSize: 25,
                                     fontFamily: 'RobotoSlab',
->>>>>>> master
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -526,16 +480,6 @@ class _TrackerPageState extends State<TrackerPage> {
                   ],
                 ),
               ),
-<<<<<<< HEAD
-
-              SizedBox(
-                height: 120, // Mengatur tinggi container (40 + 100 jarak atas)
-                child: Column(
-                  children: [
-                    const SizedBox(height: 80), // Menambahkan jarak atas
-                    Expanded(
-                      // Memastikan ListView menggunakan sisa ruang yang tersedia
-=======
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(top: 80),
@@ -609,7 +553,6 @@ class _TrackerPageState extends State<TrackerPage> {
                   children: [
                     const SizedBox(height: 18),
                     Expanded(
->>>>>>> master
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
@@ -621,8 +564,6 @@ class _TrackerPageState extends State<TrackerPage> {
                             'Tahun Ini'
                           ];
 
-<<<<<<< HEAD
-=======
                           final List<String> filters = [
                             'hari_ini',
                             'minggu_ini',
@@ -630,17 +571,10 @@ class _TrackerPageState extends State<TrackerPage> {
                             'tahun_ini'
                           ];
 
->>>>>>> master
                           return Padding(
                             padding: const EdgeInsets.only(right: 2, left: 8),
                             child: ElevatedButton(
                               onPressed: () {
-<<<<<<< HEAD
-                                // Aksi untuk tombol
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-=======
                                 setState(() {
                                   _selectedFilter = filters[index];
                                 });
@@ -652,30 +586,17 @@ class _TrackerPageState extends State<TrackerPage> {
                                     _selectedFilter == filters[index]
                                         ? AppColors.primary
                                         : Colors.white,
->>>>>>> master
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   side: const BorderSide(color: Colors.black),
                                 ),
                                 elevation: 0,
-<<<<<<< HEAD
-                                minimumSize: const Size(
-                                    105, 38), // Mengatur lebar minimum tombol
-=======
                                 minimumSize: const Size(105, 38),
->>>>>>> master
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 8),
                               ),
                               child: Text(
                                 labels[index],
-<<<<<<< HEAD
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 13,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600, // SemiBold
-=======
                                 style: TextStyle(
                                   color: _selectedFilter == filters[index]
                                       ? Colors.white
@@ -683,7 +604,6 @@ class _TrackerPageState extends State<TrackerPage> {
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
->>>>>>> master
                                 ),
                               ),
                             ),
@@ -695,53 +615,6 @@ class _TrackerPageState extends State<TrackerPage> {
                 ),
               ),
 
-<<<<<<< HEAD
-              // Konten tambahan bisa ditempatkan di sini
-              const SizedBox(height: 23), // Menambahkan jarak atas
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(1195, (index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 11.0, horizontal: 22.0),
-                        child: Container(
-                          height: 54, // Atur sesuai ukuran gambar
-                          decoration: BoxDecoration(
-                            color: Colors.white, // Warna latar belakang putih
-                            borderRadius:
-                                BorderRadius.circular(15), // Sesuaikan sudut
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(
-                                    0.5), // Warna shadow dengan transparansi
-                                spreadRadius: 0, // Jarak penyebaran shadow
-                                blurRadius: 3, // Mengatur seberapa blur shadow
-                                offset: const Offset(
-                                    0, 3), // Mengatur arah shadow (x, y)
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          // Gambar di luar header hijau, dengan posisi yang bisa diatur
-          Positioned(
-            left: 115, // Atur posisi gambar dari kiri
-            top: 160, // Atur posisi gambar dari atas
-            child: Container(
-              height: 180, // Tinggi gambar
-              width: 180, // Lebar gambar
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AppImages.trackerimage),
-                  fit: BoxFit.cover, // Atur gambar agar sesuai dengan kontainer
-=======
               Expanded(child: _buildContent()),
               // Expanded(
               //   child: _isLoading
@@ -836,32 +709,11 @@ class _TrackerPageState extends State<TrackerPage> {
                 image: DecorationImage(
                   image: AssetImage(AppImages.trackerimage),
                   fit: BoxFit.cover,
->>>>>>> master
                 ),
               ),
             ),
           ),
           Positioned(
-<<<<<<< HEAD
-            left: 315, // Jarak dari kiri
-            top: 600, // Jarak dari atas untuk menjaga jarak dengan header
-            child: GestureDetector(
-              onTap: () {
-                // Aksi saat ikon ditekan
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) =>
-                //           const AddMood()), // Navigasi ke halaman SurveyMood
-                // );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 8, vertical: 12), // Padding untuk SVG
-                child: SizedBox(
-                  height: 50, // Tinggi ikon
-                  width: 50, // Lebar ikon
-=======
             left: 315,
             top: 735,
             child: GestureDetector(
@@ -892,7 +744,6 @@ class _TrackerPageState extends State<TrackerPage> {
                 child: SizedBox(
                   height: 50,
                   width: 50,
->>>>>>> master
                   child: Image.asset(AppImages.plustracker),
                 ),
               ),
@@ -902,9 +753,6 @@ class _TrackerPageState extends State<TrackerPage> {
       ),
     );
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 class TrackerPageItem {
@@ -913,4 +761,3 @@ class TrackerPageItem {
 
   TrackerPageItem({required this.color, required this.image});
 }
->>>>>>> master

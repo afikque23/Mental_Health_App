@@ -1,6 +1,6 @@
 {
-    "name": "cloning_spotify",
-    "short_name": "cloning_spotify",
+    "name": "mental_health_app",
+    "short_name": "mental_health_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

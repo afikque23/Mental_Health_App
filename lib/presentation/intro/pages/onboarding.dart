@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-<<<<<<< HEAD
-import 'package:mental_health_app/core/configs/assets/app_images.dart';
-import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
-=======
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
 import 'package:mental_health_app/core/configs/assets/app_images.dart';
->>>>>>> master
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -50,14 +45,7 @@ class OnBoarding extends StatelessWidget {
         ),
       ],
       onDone: () {
-<<<<<<< HEAD
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
-        );
-=======
         Navigator.of(context).pushReplacement(_createRoute());
->>>>>>> master
       },
       showSkipButton: false,
       showNextButton: true,
@@ -88,26 +76,6 @@ class OnBoarding extends StatelessWidget {
             child: Icon(Icons.arrow_forward_ios,
                 color: Color(0xff68B39F), size: 24)),
       ),
-<<<<<<< HEAD
-      skip: Container(
-          width: 95,
-          height: 35,
-          padding: const EdgeInsets.symmetric(),
-          decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xff68B39F), width: 1),
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: const Center(
-            child: Text('Lewati',
-                style: TextStyle(
-                  color: Color(0xff68B39F),
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                )),
-          )),
-=======
->>>>>>> master
       done: Container(
           width: 95,
           height: 35,
@@ -153,8 +121,6 @@ _buildBody(String image, String text) {
     )
   ]);
 }
-<<<<<<< HEAD
-=======
 
 Route _createRoute() {
   return PageRouteBuilder(
@@ -173,4 +139,3 @@ Route _createRoute() {
     transitionDuration: const Duration(seconds: 1), // Adjust the duration here
   );
 }
->>>>>>> master

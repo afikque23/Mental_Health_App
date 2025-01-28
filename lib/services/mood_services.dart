@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mental_health_app/services/api_service.dart';
 
 class MoodService {
-  static const String _baseUrl = 'http://10.0.2.2:8000/api';
+  static const String _baseUrl = 'https://mentalhealth.cyou/api';
   final ApiService _apiService = ApiService();
 
   // Ambil data mood tracker berdasarkan filter waktu

@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-import 'package:mental_health_app/core/configs/assets/app_images.dart';
-import 'package:mental_health_app/core/configs/theme/app_colors.dart';
-
-// Contoh halaman artikel (Anda bisa ganti dengan halaman artikel yang sebenarnya)
-class ArticlePageList extends StatelessWidget {
-  final String title;
-  const ArticlePageList({super.key, required this.title});
-=======
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -50,15 +40,10 @@ class ArticlePageList extends StatelessWidget {
       return "Invalid Date";
     }
   }
->>>>>>> master
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('Halaman artikel: $title')),
-=======
       appBar: AppBar(
         title: const Text(
           "NURAGA",
@@ -163,66 +148,10 @@ class ArticlePageList extends StatelessWidget {
           ],
         ),
       ),
->>>>>>> master
     );
   }
 }
 
-<<<<<<< HEAD
-class ArticlePage extends StatelessWidget {
-  const ArticlePage({super.key});
-
-  // Data artikel dengan informasi navigasi
-  final List<Map<String, dynamic>> articles = const [
-    {
-      "title": "Mengatasi Stress",
-      "content":
-          "Tips dan trik mengatasi stress dalam kehidupan sehari-hari...",
-      "route": "/artikel-stress",
-      "pageBuilder": ArticlePageList(title: "Mengatasi Stress"),
-    },
-    {
-      "title": "Meditasi untuk Pemula",
-      "content": "Panduan lengkap meditasi untuk pemula yang ingin memulai...",
-      "route": "/artikel-meditasi",
-      "pageBuilder": ArticlePageList(title: "Meditasi untuk Pemula"),
-    },
-    {
-      "title": "Pola Tidur Sehat",
-      "content":
-          "Bagaimana menciptakan pola tidur yang sehat dan berkualitas...",
-      "route": "/artikel-tidur",
-      "pageBuilder": ArticlePageList(title: "Pola Tidur Sehat"),
-    },
-    {
-      "title": "Nutrisi untuk Mental",
-      "content": "Makanan yang dapat membantu meningkatkan kesehatan mental...",
-      "route": "/artikel-nutrisi",
-      "pageBuilder": ArticlePageList(title: "Nutrisi untuk Mental"),
-    },
-    {
-      "title": "Olahraga dan Mental",
-      "content": "Hubungan antara aktivitas fisik dan kesehatan mental...",
-      "route": "/artikel-olahraga",
-      "pageBuilder": ArticlePageList(title: "Olahraga dan Mental"),
-    },
-  ];
-
-  void _navigateToArticle(BuildContext context, Map<String, dynamic> article) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => article["pageBuilder"],
-      ),
-    );
-  }
-
-  Widget _buildArticleCard(BuildContext context, Map<String, dynamic> article) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      width: 404,
-      height: 179,
-=======
 class ArticlePage extends StatefulWidget {
   const ArticlePage({Key? key}) : super(key: key);
 
@@ -433,28 +362,16 @@ class _ArticlePageState extends State<ArticlePage> {
 
     final String articleImageUrl = article['image'] != null &&
             article['image'].isNotEmpty
-        ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+        ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
         : 'https://via.placeholder.com/150';
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       constraints: const BoxConstraints(maxHeight: 230),
->>>>>>> master
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
-<<<<<<< HEAD
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 4,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: GestureDetector(
-        onTap: () => _navigateToArticle(context, article),
-=======
           BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, 2)),
         ],
       ),
@@ -466,7 +383,7 @@ class _ArticlePageState extends State<ArticlePage> {
               tittle: article['tittle'] ?? "No Title",
               content: article['content'] ?? "No Content",
               imageUrl: article['image'] != null && article['image'].isNotEmpty
-                  ? "http://10.0.2.2/api-app/storage/app/private/public/articles/${article['image']}"
+                  ? "https://mentalhealth.cyou/storage/app/private/public/articles/${article['image']}"
                   : 'https://via.placeholder.com/150',
               category: article['category'] ?? "No Category",
               created_at: article['createdAt'] ?? "No Date",
@@ -474,55 +391,21 @@ class _ArticlePageState extends State<ArticlePage> {
             ),
           ),
         ),
->>>>>>> master
         child: Row(
           children: [
             Container(
               width: 146,
-<<<<<<< HEAD
-              height: 179,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-=======
               height: 275,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(articleImageUrl),
                   fit: BoxFit.cover,
                 ),
->>>>>>> master
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),
               ),
-<<<<<<< HEAD
-              child: IconButton(
-                icon: const Icon(Icons.favorite_border),
-                onPressed: () {},
-              ),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      article["title"] ?? "Judul Artikel",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      article["content"] ?? "Lorem Ipsum...",
-                      style: const TextStyle(fontSize: 14),
-=======
               child: Stack(
                 children: [
                   Positioned(
@@ -599,7 +482,6 @@ class _ArticlePageState extends State<ArticlePage> {
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
->>>>>>> master
                     ),
                   ],
                 ),
@@ -628,13 +510,6 @@ class _ArticlePageState extends State<ArticlePage> {
                   children: [
                     Row(
                       children: [
-<<<<<<< HEAD
-                        const Padding(
-                          padding: EdgeInsets.only(left: 5),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            radius: 24,
-=======
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: GestureDetector(
@@ -652,46 +527,24 @@ class _ArticlePageState extends State<ArticlePage> {
                                 ? CircleAvatar(
                                     radius: 25,
                                     backgroundImage: NetworkImage(
-                                        'http://10.0.2.2/api-app/storage/app/private/public/profile_images/$_profileImage'),
+                                        'https://mentalhealth.cyou/storage/app/private/public/profile_images/$_profileImage'),
                                   )
                                 : const CircleAvatar(
                                     radius: 30,
                                     child: Icon(Icons.person, size: 30),
                                   ),
->>>>>>> master
                           ),
                         ),
                         Expanded(
                           child: Container(
                             width: 276,
-<<<<<<< HEAD
-                            height: 34,
-                            margin: const EdgeInsets.symmetric(horizontal: 18),
-                            padding: const EdgeInsets.symmetric(horizontal: 18),
-=======
                             height: 40,
                             margin: const EdgeInsets.symmetric(horizontal: 10),
                             padding: const EdgeInsets.symmetric(horizontal: 10),
->>>>>>> master
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
                             ),
-<<<<<<< HEAD
-                            child: const Row(
-                              children: [
-                                Icon(Icons.search, color: Colors.black),
-                                SizedBox(width: 8),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Cari artikel disini...',
-                                        hintStyle: TextStyle(
-                                            color: AppColors.grey,
-                                            fontSize: 12),
-=======
                             child: Row(
                               children: [
                                 IconButton(
@@ -732,7 +585,6 @@ class _ArticlePageState extends State<ArticlePage> {
                                         hintText: 'Cari artikel disini...',
                                         hintStyle: TextStyle(
                                             color: Colors.black, fontSize: 12),
->>>>>>> master
                                         border: InputBorder.none,
                                       ),
                                     ),
@@ -742,36 +594,6 @@ class _ArticlePageState extends State<ArticlePage> {
                             ),
                           ),
                         ),
-<<<<<<< HEAD
-                        Container(
-                          padding: const EdgeInsets.all(0.0),
-                          child: const Icon(
-                            size: 27,
-                            Icons.notifications,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
-                            width: 210,
-                            height: 100,
-                            child: const Text(
-                              'Ayo kita Membaca !',
-                              style: TextStyle(
-                                  fontFamily: 'Coiny',
-                                  fontSize: 30,
-                                  color: AppColors.primaryBackground),
-                            )),
-                        const SizedBox(width: 0),
-=======
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -790,20 +612,13 @@ class _ArticlePageState extends State<ArticlePage> {
                                 color: AppColors.primaryBackground),
                           ),
                         ),
->>>>>>> master
                         Image.asset(
                           AppImages.articleAppbar,
                           width: 150,
                           height: 126,
-<<<<<<< HEAD
-                        )
-                      ],
-                    )
-=======
                         ),
                       ],
                     ),
->>>>>>> master
                   ],
                 ),
               ),
@@ -817,21 +632,11 @@ class _ArticlePageState extends State<ArticlePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ListView(
-<<<<<<< HEAD
-                  padding: const EdgeInsets.all(16),
-                  children: [
-                    const SizedBox(height: 5),
-                    const Center(
-                      child: Text(
-                        '"Aequam memento rebus in arduis servare mentem"',
-                        style: TextStyle(
-=======
                   children: [
                     Center(
                       child: Text(
                         '"$content"',
                         style: const TextStyle(
->>>>>>> master
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins',
@@ -840,17 +645,10 @@ class _ArticlePageState extends State<ArticlePage> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-<<<<<<< HEAD
-                    const Center(
-                      child: Text(
-                        '-Classroom of the Elite 02[00 : 30]-',
-                        style: TextStyle(
-=======
                     Center(
                       child: Text(
                         '-$author-',
                         style: const TextStyle(
->>>>>>> master
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins',
@@ -859,84 +657,6 @@ class _ArticlePageState extends State<ArticlePage> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-<<<<<<< HEAD
-                    const SizedBox(height: 15),
-                    SizedBox(
-                      height: 35,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 0), // Menambahkan jarak atas
-                          Expanded(
-                            // Memastikan ListView menggunakan sisa ruang yang tersedia
-                            child: ListView.builder(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 4,
-                              itemBuilder: (context, index) {
-                                final List<String> labels = [
-                                  'Kecemasan',
-                                  'Terapi',
-                                  'Depresi',
-                                  'Mood'
-                                ];
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 5, left: 5),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      // Aksi untuk tombol
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        side: const BorderSide(
-                                            color: Colors.black),
-                                      ),
-                                      elevation: 0,
-                                      minimumSize: const Size(110,
-                                          38), // Mengatur lebar minimum tombol
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 8),
-                                    ),
-                                    child: Text(
-                                      labels[index],
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 100),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Relevan untuk Anda   >',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: AppColors.primary,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    // List artikel menggunakan ListView.builder
-                    ...articles
-                        .map((article) => _buildArticleCard(context, article))
-                        // ignore: unnecessary_to_list_in_spreads
-                        .toList(),
-=======
                     const SizedBox(height: 20),
                     // Filter Kategori
                     SizedBox(
@@ -983,7 +703,6 @@ class _ArticlePageState extends State<ArticlePage> {
                     // Daftar Artikel
                     ..._filteredArticles()
                         .map((article) => _buildArticleCard(context, article)),
->>>>>>> master
                   ],
                 ),
               ),
@@ -994,57 +713,3 @@ class _ArticlePageState extends State<ArticlePage> {
     );
   }
 }
-<<<<<<< HEAD
-          // SizedBox(
-          //   height: 120, // Mengatur tinggi container (40 + 100 jarak atas)
-          //   child: Column(
-          //     children: [
-          //       const SizedBox(height: 80), // Menambahkan jarak atas
-          //       Expanded(
-          //         // Memastikan ListView menggunakan sisa ruang yang tersedia
-          //         child: ListView.builder(
-          //           padding: const EdgeInsets.symmetric(horizontal: 20),
-          //           scrollDirection: Axis.horizontal,
-          //           itemCount: 4,
-          //           itemBuilder: (context, index) {
-          //             final List<String> labels = [
-          //               'Kecemasan',
-          //               'Terapi',
-          //               'Depresi',
-          //               'Mood'
-          //             ];
-          //             return Padding(
-          //               padding: const EdgeInsets.only(right: 5, left: 5),
-          //               child: ElevatedButton(
-          //                 onPressed: () {
-          //                   // Aksi untuk tombol
-          //                 },
-          //                 style: ElevatedButton.styleFrom(
-          //                   backgroundColor: Colors.white,
-          //                   shape: RoundedRectangleBorder(
-          //                     borderRadius: BorderRadius.circular(10),
-          //                     side: const BorderSide(color: Colors.black),
-          //                   ),
-          //                   elevation: 0,
-          //                   minimumSize: const Size(
-          //                       110, 38), // Mengatur lebar minimum tombol
-          //                   padding: const EdgeInsets.symmetric(
-          //                       horizontal: 16, vertical: 8),
-          //                 ),
-          //                 child: Text(
-          //                   labels[index],
-          //                   style: const TextStyle(
-          //                     color: Colors.black,
-          //                     fontSize: 13,
-          //                   ),
-          //                 ),
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-=======
->>>>>>> master

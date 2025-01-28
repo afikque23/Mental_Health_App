@@ -3,10 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mental_health_app/services/api_service.dart';
 import 'package:mental_health_app/core/configs/theme/app_colors.dart';
 import 'package:mental_health_app/presentation/auth/pages/login_page.dart';
-<<<<<<< HEAD
-=======
 import 'package:mental_health_app/services/firebase_service.dart';
->>>>>>> master
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -334,9 +331,6 @@ class _RegisterPageState extends State<RegisterPage> {
           return;
         }
 
-<<<<<<< HEAD
-        try {
-=======
         // Tampilkan loading dialog
         showDialog(
           context: context,
@@ -383,7 +377,6 @@ class _RegisterPageState extends State<RegisterPage> {
             return;
           }
 
->>>>>>> master
           final response = await ApiService().register(
             nama: _namaController.text,
             email: _emailController.text,
@@ -392,15 +385,6 @@ class _RegisterPageState extends State<RegisterPage> {
             tanggal_lahir: _selectedDate!,
             password: _passwordController.text,
             passwordConfirmation: _confirmPasswordController.text,
-<<<<<<< HEAD
-          );
-
-          // Pastikan bahwa kondisi untuk pesan sukses tepat
-
-          if (response['status_code'] != 201) {
-            print("if succsess");
-            // Jika respons tidak sesuai dengan kondisi sukses, tampilkan error
-=======
             fcmToken: fcmToken,
           );
 
@@ -409,7 +393,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
           if (response['message'] ==
               'Registrasi berhasil. Mohon verifikasi email Anda.') {
->>>>>>> master
             ScaffoldMessenger.of(context)
               ..clearSnackBars()
               ..showSnackBar(
@@ -417,16 +400,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   content: Text(
                     response["message"] ?? 'Gagal melakukan registrasi',
                     style: const TextStyle(
-<<<<<<< HEAD
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: "Poppins"),
-=======
                       fontSize: 18,
                       color: Colors.white,
                       fontFamily: "Poppins",
                     ),
->>>>>>> master
                   ),
                   backgroundColor: Colors.green,
                 ),
@@ -436,12 +413,8 @@ class _RegisterPageState extends State<RegisterPage> {
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),
             );
-<<<<<<< HEAD
-          } else {
-=======
           } else if (response['message'] !=
               'Registrasi berhasil. Mohon verifikasi email Anda.') {
->>>>>>> master
             ScaffoldMessenger.of(context)
               ..clearSnackBars()
               ..showSnackBar(
@@ -459,13 +432,9 @@ class _RegisterPageState extends State<RegisterPage> {
               );
           }
         } catch (e) {
-<<<<<<< HEAD
-          // Tangani exception dengan menampilkan pesan error
-=======
           // Tutup loading dialog
           Navigator.pop(context);
 
->>>>>>> master
           ScaffoldMessenger.of(context)
             ..clearSnackBars()
             ..showSnackBar(
@@ -489,10 +458,6 @@ class _RegisterPageState extends State<RegisterPage> {
           fontSize: 18,
           fontWeight: FontWeight.bold,
           fontFamily: 'Poppins',
-<<<<<<< HEAD
-          color : Colors.white
-=======
->>>>>>> master
         ),
       ),
     );
